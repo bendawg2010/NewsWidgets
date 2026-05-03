@@ -54,16 +54,17 @@ struct GeneralNewsWidget: Widget {
             GeneralNewsView(entry: entry)
                 .containerBackground(for: .widget) {
                     ZStack {
-                        Rectangle().fill(.regularMaterial)
+                        Rectangle().fill(Color(red: 0.10, green: 0.06, blue: 0.10))
                         LinearGradient(
                             colors: [
-                                Color(red: 0.98, green: 0.18, blue: 0.28).opacity(0.10),
-                                Color(red: 0.50, green: 0.11, blue: 0.11).opacity(0.05),
+                                Color(red: 0.98, green: 0.18, blue: 0.28).opacity(0.18),
+                                Color(red: 0.50, green: 0.11, blue: 0.11).opacity(0.10),
                                 .clear
                             ],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
+                        Rectangle().fill(.thickMaterial).opacity(0.35)
                     }
                 }
         }

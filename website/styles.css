@@ -1507,3 +1507,574 @@ footer {
   transform: translateY(-1px) scale(1.02);
   box-shadow: 0 14px 36px rgba(0, 213, 75, 0.55);
 }
+
+/* ============================================================
+   THREE TRACKERS — hub section on the homepage
+   ============================================================ */
+.tracker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.tracker-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 30px 28px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: inherit;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.2,.7,.3,1),
+              border-color .25s ease,
+              background .25s ease,
+              box-shadow .35s ease;
+}
+.tracker-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .35s ease;
+  background: var(--tracker-glow, radial-gradient(80% 60% at 50% 0%, rgba(168,86,247,0.18), transparent 60%));
+}
+.tracker-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--hairline-strong);
+  background: var(--surface-2);
+  box-shadow: 0 28px 80px -28px var(--tracker-shadow, rgba(168,86,247,0.45));
+}
+.tracker-card:hover::before { opacity: 1; }
+.tracker-card .ic {
+  position: relative;
+  z-index: 1;
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: grid; place-items: center;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 28px var(--tracker-shadow, rgba(168,86,247,0.4)),
+              inset 0 1px 0 rgba(255,255,255,0.22);
+  background: var(--tracker-icon, var(--grad-ai));
+}
+.tracker-card .ic svg { width: 24px; height: 24px; color: #fff; }
+.tracker-card h3 {
+  position: relative; z-index: 1;
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.tracker-card p {
+  position: relative; z-index: 1;
+  margin: 0 0 20px;
+  color: var(--text-dim);
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+.tracker-card .arrow {
+  position: relative; z-index: 1;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--tracker-accent, #fff);
+  transition: gap .2s ease;
+}
+.tracker-card:hover .arrow { gap: 12px; }
+
+/* per-tracker theme */
+.tracker-card.t-news {
+  --tracker-icon: var(--grad-ai);
+  --tracker-shadow: rgba(168, 86, 247, 0.45);
+  --tracker-accent: #C089FA;
+  --tracker-glow: radial-gradient(80% 60% at 50% 0%, rgba(168,86,247,0.18), transparent 60%);
+}
+.tracker-card.t-sports {
+  --tracker-icon: linear-gradient(135deg, #34C759 0%, #0d8c47 100%);
+  --tracker-shadow: rgba(52, 199, 89, 0.42);
+  --tracker-accent: #6BE08A;
+  --tracker-glow: radial-gradient(80% 60% at 50% 0%, rgba(52,199,89,0.18), transparent 60%);
+}
+.tracker-card.t-f1 {
+  --tracker-icon: linear-gradient(135deg, #FF3333 0%, #E10600 100%);
+  --tracker-shadow: rgba(225, 6, 0, 0.45);
+  --tracker-accent: #FF6B6B;
+  --tracker-glow: radial-gradient(80% 60% at 50% 0%, rgba(225,6,0,0.20), transparent 60%);
+}
+
+@media (max-width: 900px) {
+  .tracker-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   SPORTS THEME — Apple Sports green
+   ============================================================ */
+.eyebrow-sports {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.18), rgba(13, 140, 71, 0.18));
+  border: 1px solid rgba(52, 199, 89, 0.34);
+  color: rgba(255,255,255,0.92);
+  letter-spacing: 0.2px;
+}
+.eyebrow-sports .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #34C759;
+  box-shadow: 0 0 10px rgba(52,199,89,0.85);
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.55; transform: scale(0.85); }
+}
+
+.btn-sports {
+  color: #fff;
+  background: linear-gradient(135deg, #34C759 0%, #0d8c47 100%);
+  box-shadow:
+    0 12px 40px -10px rgba(52, 199, 89, 0.65),
+    inset 0 1px 0 rgba(255,255,255,0.22);
+}
+.btn-sports:hover {
+  box-shadow:
+    0 18px 60px -12px rgba(52, 199, 89, 0.85),
+    0 0 0 1px rgba(255,255,255,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.26);
+}
+
+/* shared themed helpers used on per-page heros */
+.grad-sports {
+  background: linear-gradient(135deg, #34C759 0%, #0d8c47 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  animation: shimmer 9s ease-in-out infinite;
+}
+.grad-f1 {
+  background: linear-gradient(135deg, #FF3333 0%, #E10600 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  animation: shimmer 9s ease-in-out infinite;
+}
+
+/* video frame variants */
+.video-frame.video-sports {
+  background: linear-gradient(135deg, #34C759 0%, #0d8c47 100%);
+  box-shadow: 0 50px 120px -40px rgba(52, 199, 89, 0.55);
+}
+.video-frame.video-sports .glow {
+  background: linear-gradient(135deg, #34C759 0%, #0d8c47 100%);
+}
+.video-frame.video-f1 {
+  background: linear-gradient(135deg, #FF3333 0%, #E10600 100%);
+  box-shadow: 0 50px 120px -40px rgba(225, 6, 0, 0.55);
+}
+.video-frame.video-f1 .glow {
+  background: linear-gradient(135deg, #FF3333 0%, #E10600 100%);
+}
+
+/* feature grid theme variants */
+.feature-grid.theme-sports .feature::before {
+  background: linear-gradient(135deg, rgba(52,199,89,0.45), rgba(13,140,71,0.45));
+}
+.feature-grid.theme-sports .feature .icon {
+  background: linear-gradient(135deg, rgba(52,199,89,0.20), rgba(13,140,71,0.16));
+  border-color: rgba(52,199,89,0.35);
+}
+.feature-grid.theme-f1 .feature::before {
+  background: linear-gradient(135deg, rgba(255,51,51,0.45), rgba(225,6,0,0.45));
+}
+.feature-grid.theme-f1 .feature .icon {
+  background: linear-gradient(135deg, rgba(255,51,51,0.20), rgba(225,6,0,0.16));
+  border-color: rgba(225,6,0,0.35);
+}
+
+/* desktop-stage variants — tints for the hero stage */
+.desktop-stage.stage-sports {
+  background:
+    radial-gradient(70% 90% at 50% -10%, rgba(52, 199, 89, 0.20), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+}
+.desktop-stage.stage-f1 {
+  background:
+    radial-gradient(70% 90% at 50% -10%, rgba(225, 6, 0, 0.22), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+}
+
+/* free / oss card variants */
+.free-card.theme-sports {
+  background:
+    radial-gradient(80% 100% at 50% 0%, rgba(52, 199, 89, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+}
+.free-card.theme-f1 {
+  background:
+    radial-gradient(80% 100% at 50% 0%, rgba(225, 6, 0, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+}
+
+/* cta band variant grad helpers */
+.cta-band h2 .grad-sports {
+  background: linear-gradient(135deg, #34C759 0%, #0d8c47 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.cta-band h2 .grad-f1 {
+  background: linear-gradient(135deg, #FF3333 0%, #E10600 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* section-head themed grads */
+.section-head h2 .grad-sports {
+  background: linear-gradient(135deg, #34C759 0%, #0d8c47 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.section-head h2 .grad-f1 {
+  background: linear-gradient(135deg, #FF3333 0%, #E10600 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================================
+   SPORTS WIDGET MOCKUP
+   ============================================================ */
+.widget-sports {
+  width: 100%;
+  max-width: 380px;
+  padding: 18px;
+  border-radius: 22px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255,255,255,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  transition: transform .35s cubic-bezier(.2,.7,.3,1);
+}
+.widget-sports:hover { transform: translateY(-4px) scale(1.005); }
+
+.widget-sports .w-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.widget-sports .w-icon-sports {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  display: grid; place-items: center;
+  flex: 0 0 22px;
+  background: linear-gradient(135deg, #34C759 0%, #0d8c47 100%);
+  box-shadow: 0 4px 12px rgba(52,199,89,0.35),
+              inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.widget-sports .w-icon-sports svg { width: 13px; height: 13px; color: #fff; }
+.widget-sports .w-title {
+  font-weight: 700;
+  font-size: 14.5px;
+  letter-spacing: -0.005em;
+}
+.widget-sports .live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(52,199,89,0.18);
+  border: 1px solid rgba(52,199,89,0.4);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #6BE08A;
+}
+.widget-sports .live-pill::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #34C759;
+  box-shadow: 0 0 6px #34C759;
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+.widget-sports .w-time {
+  margin-left: auto;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  font-variant-numeric: tabular-nums;
+}
+
+.games-list { display: grid; gap: 0; }
+.game-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.game-row:first-child { border-top: 0; }
+.league-pill {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: #fff;
+  text-transform: uppercase;
+  min-width: 38px;
+  text-align: center;
+}
+.league-pill.nba { background: #C8102E; }
+.league-pill.nfl { background: #013369; }
+.league-pill.mlb { background: #0E3386; }
+.league-pill.nhl { background: #111; border: 1px solid rgba(255,255,255,0.18); }
+.game-matchup {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+.game-status {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.game-status.live { color: #6BE08A; }
+.game-livedot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #34C759;
+  box-shadow: 0 0 8px rgba(52,199,89,0.85);
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+.game-livedot.hidden { background: transparent; box-shadow: none; animation: none; }
+
+/* leagues chip section */
+.leagues-section {
+  text-align: center;
+}
+.leagues-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 auto 22px;
+  max-width: 700px;
+}
+.leagues-chips .chip {
+  font-size: 14px;
+  padding: 10px 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.leagues-caption {
+  text-align: center;
+  margin: 0 auto;
+  color: var(--text-dim);
+  font-size: 15px;
+  max-width: 50ch;
+}
+
+/* ============================================================
+   F1 WIDGET MOCKUP
+   ============================================================ */
+.widget-f1 {
+  width: 100%;
+  max-width: 380px;
+  padding: 18px;
+  border-radius: 22px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255,255,255,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  transition: transform .35s cubic-bezier(.2,.7,.3,1);
+}
+.widget-f1:hover { transform: translateY(-4px) scale(1.005); }
+
+.widget-f1 .w-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.widget-f1 .w-icon-f1 {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  display: grid; place-items: center;
+  flex: 0 0 22px;
+  background: linear-gradient(135deg, #FF3333 0%, #E10600 100%);
+  box-shadow: 0 4px 12px rgba(225,6,0,0.4),
+              inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.widget-f1 .w-icon-f1 svg { width: 13px; height: 13px; color: #fff; }
+.widget-f1 .w-title {
+  font-weight: 700;
+  font-size: 14.5px;
+  letter-spacing: -0.005em;
+}
+.widget-f1 .live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(52,199,89,0.18);
+  border: 1px solid rgba(52,199,89,0.4);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #6BE08A;
+}
+.widget-f1 .live-pill::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #34C759;
+  box-shadow: 0 0 6px #34C759;
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+.widget-f1 .race-meta {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.02em;
+}
+
+.drivers-list { display: grid; gap: 0; }
+.driver-row {
+  display: grid;
+  grid-template-columns: 26px 4px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.driver-row:first-child { border-top: 0; padding-top: 4px; }
+.driver-pos {
+  font-size: 16px;
+  font-weight: 800;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+.driver-pos.p1 { color: #FFD23F; text-shadow: 0 0 12px rgba(255,210,63,0.5); }
+.team-stripe {
+  width: 4px;
+  height: 28px;
+  border-radius: 2px;
+}
+.driver-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.driver-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.driver-code {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+.team-name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.55);
+}
+.driver-laptime {
+  font-family: "SF Mono", ui-monospace, "Menlo", monospace;
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.65);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.driver-gap {
+  text-align: right;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.driver-gap.leader {
+  color: #FFD23F;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+}
+
+/* drivers chip section */
+.drivers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.drivers-col {
+  padding: 36px 30px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.drivers-col h3 {
+  margin: 0 0 18px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+.drivers-col h3 .f1-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: 1px;
+  background: #E10600;
+  box-shadow: 0 0 10px rgba(225,6,0,0.7);
+}
+@media (max-width: 720px) {
+  .drivers-grid { grid-template-columns: 1fr; }
+}

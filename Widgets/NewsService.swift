@@ -167,16 +167,27 @@ enum NewsService {
         }
         guard let imageURL = resolvedURL else { return stories }
 
+        // 1. Cache hit → skip the network entirely
+        if let cached = cachedImage(for: imageURL) {
+            var updated = stories
+            let h = hero
+            updated[0] = NewsStory(
+                id: h.id, title: h.title, url: h.url,
+                source: h.source, timestamp: h.timestamp,
+                imageURL: imageURL, imageData: cached
+            )
+            return updated
+        }
+
+        // 2. Otherwise download, downsample once, cache to disk
         do {
             var req = URLRequest(url: imageURL)
             req.timeoutInterval = 8
             let (data, _) = try await URLSession.shared.data(for: req)
-            let final: Data
-            if data.count > 600_000, let downsampled = downsample(data: data, maxWidth: 800) {
-                final = downsampled
-            } else {
-                final = data
-            }
+            // Always downsample (even small images) so we cache a uniform <100 KB jpeg.
+            // Widget snapshot memory cap is ~30 MB; keeping the hero tiny matters.
+            let final = downsample(data: data, maxWidth: 600) ?? data
+            writeCache(final, for: imageURL)
             var updated = stories
             let h = hero
             updated[0] = NewsStory(
@@ -220,22 +231,66 @@ enum NewsService {
         return nil
     }
 
+    /// Fast downsample using ImageIO. Decodes only at the requested size
+    /// (CGImageSourceCreateThumbnailAtIndex), avoiding NSImage's lockFocus
+    /// path which allocates a full bitmap context per image.
     private static func downsample(data: Data, maxWidth: CGFloat) -> Data? {
-        guard let image = NSImage(data: data) else { return nil }
-        let size = image.size
-        guard size.width > maxWidth else { return data }
-        let ratio = maxWidth / size.width
-        let newSize = NSSize(width: maxWidth, height: size.height * ratio)
-        let resized = NSImage(size: newSize)
-        resized.lockFocus()
-        image.draw(in: NSRect(origin: .zero, size: newSize),
-                   from: NSRect(origin: .zero, size: size),
-                   operation: .copy, fraction: 1.0)
-        resized.unlockFocus()
-        guard let tiff = resized.tiffRepresentation,
-              let rep = NSBitmapImageRep(data: tiff) else { return nil }
-        return rep.representation(using: .jpeg,
-                                  properties: [.compressionFactor: 0.7])
+        let cfData = data as CFData
+        guard let src = CGImageSourceCreateWithData(cfData, nil) else { return nil }
+        let opts: [CFString: Any] = [
+            kCGImageSourceCreateThumbnailFromImageAlways: true,
+            kCGImageSourceCreateThumbnailWithTransform:   true,
+            kCGImageSourceShouldCacheImmediately:         true,
+            kCGImageSourceThumbnailMaxPixelSize:          Int(maxWidth),
+        ]
+        guard let cg = CGImageSourceCreateThumbnailAtIndex(src, 0, opts as CFDictionary) else {
+            return nil
+        }
+        let mutable = NSMutableData()
+        guard let dest = CGImageDestinationCreateWithData(
+            mutable, "public.jpeg" as CFString, 1, nil
+        ) else { return nil }
+        let destOpts: [CFString: Any] = [kCGImageDestinationLossyCompressionQuality: 0.65]
+        CGImageDestinationAddImage(dest, cg, destOpts as CFDictionary)
+        guard CGImageDestinationFinalize(dest) else { return nil }
+        return mutable as Data
+    }
+
+    // MARK: - Disk cache for hero images
+
+    private static let cacheDir: URL = {
+        let base = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
+            ?? URL(fileURLWithPath: NSTemporaryDirectory())
+        let dir = base.appendingPathComponent("NewsWidgets-Images", isDirectory: true)
+        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        return dir
+    }()
+
+    private static let cacheTTL: TimeInterval = 60 * 60 * 6  // 6 hours
+
+    private static func cachePath(for url: URL) -> URL {
+        // Stable, filesystem-safe filename
+        let key = url.absoluteString
+            .data(using: .utf8)
+            .map { $0.base64EncodedString() } ?? UUID().uuidString
+        let safe = key.replacingOccurrences(of: "/", with: "_")
+                       .replacingOccurrences(of: "+", with: "-")
+                       .replacingOccurrences(of: "=", with: "")
+        return cacheDir.appendingPathComponent("\(safe).jpg")
+    }
+
+    private static func cachedImage(for url: URL) -> Data? {
+        let path = cachePath(for: url)
+        guard let attrs = try? FileManager.default.attributesOfItem(atPath: path.path),
+              let mtime = attrs[.modificationDate] as? Date,
+              Date().timeIntervalSince(mtime) < cacheTTL,
+              let data = try? Data(contentsOf: path)
+        else { return nil }
+        return data
+    }
+
+    private static func writeCache(_ data: Data, for url: URL) {
+        try? data.write(to: cachePath(for: url), options: .atomic)
     }
 
     private static func cleanTitle(_ raw: String) -> String {

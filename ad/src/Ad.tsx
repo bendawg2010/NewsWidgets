@@ -48,7 +48,7 @@ export const NewsWidgetsAd: React.FC = () => {
       {/* Background music — generated ambient track. Fades in over 0.4s,
           stays at -8 dB to leave headroom, fades out over the last 0.8s. */}
       <Audio
-        src={staticFile("music.mp3")}
+        src={staticFile("news.mp3")}
         volume={(f) => {
           const fadeInEnd = 0.4 * AD_FPS;
           const fadeOutStart = AD_DURATION - 0.8 * AD_FPS;

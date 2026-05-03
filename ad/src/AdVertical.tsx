@@ -36,7 +36,7 @@ export const V_DURATION =
 export const NewsWidgetsAdVertical: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
     <Audio
-      src={staticFile("music.mp3")}
+      src={staticFile("news.mp3")}
       volume={(f) => {
         const fadeInEnd = 0.4 * V_FPS;
         const fadeOutStart = V_DURATION - 0.8 * V_FPS;

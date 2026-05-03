@@ -53,17 +53,21 @@ struct AINewsWidget: Widget {
         StaticConfiguration(kind: kind, provider: AINewsProvider()) { entry in
             AINewsView(entry: entry)
                 .containerBackground(for: .widget) {
+                    // Solid darkish base + gradient sheen. macOS desktop widgets
+                    // are dimmed when another app is frontmost — using an opaque
+                    // backing keeps text legible through that tint.
                     ZStack {
-                        Rectangle().fill(.regularMaterial)
+                        Rectangle().fill(Color(red: 0.10, green: 0.06, blue: 0.16))
                         LinearGradient(
                             colors: [
-                                Color(red: 0.66, green: 0.33, blue: 0.97).opacity(0.10),
-                                Color(red: 0.23, green: 0.51, blue: 0.96).opacity(0.06),
+                                Color(red: 0.66, green: 0.33, blue: 0.97).opacity(0.20),
+                                Color(red: 0.23, green: 0.51, blue: 0.96).opacity(0.12),
                                 .clear
                             ],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
+                        Rectangle().fill(.thickMaterial).opacity(0.35)
                     }
                 }
         }
