@@ -8,6 +8,7 @@ import {
 } from "remotion";
 import { COLORS, FONT_STACK } from "../tokens";
 import { Wallpaper } from "../components/Wallpaper";
+import { MacBadge } from "../components/MacBadge";
 
 /** Scene 1 — opening hook: bold tagline on a soft macOS gradient. */
 export const HookScene: React.FC = () => {
@@ -41,6 +42,7 @@ export const HookScene: React.FC = () => {
           fontFamily: FONT_STACK,
         }}
       >
+        <MacBadge opacity={titleSpring} />
         <div
           style={{
             transform: `translateY(${titleY}px)`,

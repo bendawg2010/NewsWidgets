@@ -3,6 +3,8 @@ import {
   AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig, Sequence,
 } from "remotion";
 import { COLORS, FONT_STACK } from "../tokens";
+import { MacBadge } from "../components/MacBadge";
+import { MacOSChrome } from "../components/MacOSChrome";
 
 const SN_GREEN = "#1FA85B";
 const SN_GRADIENT = `linear-gradient(135deg, ${SN_GREEN}, #0A6B36)`;
@@ -47,6 +49,7 @@ export const SNHookScene: React.FC<{ vertical?: boolean }> = ({ vertical = false
         alignItems: "center", justifyContent: "center",
         fontFamily: FONT_STACK, color: "white", padding: 60,
       }}>
+        <MacBadge vertical={vertical} opacity={t1} />
         <div style={{
           transform: `translateY(${interpolate(t1, [0, 1], [40, 0])}px)`,
           opacity: t1, fontSize, fontWeight: 800, letterSpacing: -3,
@@ -171,6 +174,7 @@ export const SNRevealScene: React.FC<{ vertical?: boolean }> = ({ vertical = fal
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <SNWallpaper />
+      <MacOSChrome appName="Sports News" vertical={vertical}>
       <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
         <div style={{
           transform: `translate(${x}px, ${y}px) scale(${scale})`,
@@ -179,11 +183,13 @@ export const SNRevealScene: React.FC<{ vertical?: boolean }> = ({ vertical = fal
           <SportsNewsWidgetMock time="9:41 PM" size={vertical ? "large" : "xl"} />
         </div>
       </AbsoluteFill>
+      </MacOSChrome>
       <div style={{
         position: "absolute",
-        [vertical ? "top" : "bottom"]: vertical ? 100 : 90,
+        [vertical ? "top" : "bottom"]: vertical ? 130 : 130,
         left: 0, right: 0, textAlign: "center",
         fontFamily: FONT_STACK, color: "white", opacity: captionOp,
+        zIndex: 60,
       }}>
         <div style={{ fontSize: vertical ? 60 : 48, fontWeight: 700, letterSpacing: -1.5 }}>
           ESPN · Fox Sports · BBC · CBS

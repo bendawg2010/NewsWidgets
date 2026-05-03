@@ -8,6 +8,7 @@ import {
 } from "remotion";
 import { COLORS, FONT_STACK } from "../tokens";
 import { Wallpaper } from "../components/Wallpaper";
+import { MacBadge } from "../components/MacBadge";
 
 export const VerticalHookScene: React.FC = () => {
   const frame = useCurrentFrame();
@@ -37,6 +38,7 @@ export const VerticalHookScene: React.FC = () => {
           padding: 60,
         }}
       >
+        <MacBadge vertical opacity={t1} />
         <div
           style={{
             transform: `translateY(${interpolate(t1, [0, 1], [40, 0])}px)`,

@@ -8,6 +8,8 @@ import {
   Sequence,
 } from "remotion";
 import { Wallpaper } from "../components/Wallpaper";
+import { MacOSChrome } from "../components/MacOSChrome";
+import { MacBadge } from "../components/MacBadge";
 import { COLORS, FONT_STACK } from "../tokens";
 import { SportsWidgetMock, SportsGame, SPORTS_GREEN } from "../widgets/SportsWidgetMock";
 import liveData from "../live-data.json";
@@ -70,6 +72,8 @@ export const SportsHookScene: React.FC<{ vertical?: boolean }> = ({
 
   const fontSize = vertical ? 180 : 130;
 
+  const badgeOp = spring({ frame: frame - 0.0 * fps, fps, config: { damping: 18 } });
+
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <SportsWallpaper />
@@ -82,6 +86,7 @@ export const SportsHookScene: React.FC<{ vertical?: boolean }> = ({
           padding: 60,
         }}
       >
+        <MacBadge vertical={vertical} opacity={badgeOp} />
         <div
           style={{
             transform: `translateY(${interpolate(t1, [0, 1], [40, 0])}px)`,
@@ -137,6 +142,7 @@ export const SportsRevealScene: React.FC<{ vertical?: boolean }> = ({
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <SportsWallpaper />
+      <MacOSChrome appName="Sports" vertical={vertical}>
       <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
         <div
           style={{
@@ -152,16 +158,18 @@ export const SportsRevealScene: React.FC<{ vertical?: boolean }> = ({
           />
         </div>
       </AbsoluteFill>
+      </MacOSChrome>
       <div
         style={{
           position: "absolute",
-          [vertical ? "top" : "bottom"]: vertical ? 100 : 90,
+          [vertical ? "top" : "bottom"]: vertical ? 130 : 130,
           left: 0,
           right: 0,
           textAlign: "center",
           fontFamily: FONT_STACK,
           color: "white",
           opacity: captionOp,
+          zIndex: 60,
         }}
       >
         <div style={{ fontSize: vertical ? 60 : 48, fontWeight: 700, letterSpacing: -1.5 }}>
