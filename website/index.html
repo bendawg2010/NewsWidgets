@@ -189,13 +189,13 @@
 <!-- ============== THREE TRACKERS HUB ============== -->
 <section id="trackers" class="container">
   <div class="section-head reveal">
-    <h2>Three trackers. <span class="grad">One install.</span></h2>
-    <p>News Widgets ships with three native widgets in the same app. Pick any one, or run all three side by side.</p>
+    <h2>Four trackers. <span class="grad">One install.</span></h2>
+    <p>The same app bundle ships four native widgets. Pick any one, or run all four side by side. Each lives in its own GitHub repo.</p>
   </div>
 
   <div class="tracker-grid">
 
-    <a class="tracker-card t-news reveal" href="#video" aria-label="News tracker">
+    <div class="tracker-card t-news reveal" aria-label="News tracker">
       <span class="ic" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <path d="M3.5 5h13a1.5 1.5 0 0 1 1.5 1.5V18a1.5 1.5 0 0 0 1.5 1.5h.5a1.5 1.5 0 0 0 1.5-1.5V8.5h-2M3.5 5v13a1.5 1.5 0 0 0 1.5 1.5h13.5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
@@ -204,10 +204,13 @@
       </span>
       <h3>News</h3>
       <p>AI Today + World news from the sources you pick. Real photos, real summaries, refreshed all day.</p>
-      <span class="arrow">See the News widget &rarr;</span>
-    </a>
+      <div class="card-links">
+        <a href="#video">See it &rarr;</a>
+        <a href="https://github.com/bendawg2010/NewsWidgets" rel="noopener" target="_blank">bendawg2010/NewsWidgets</a>
+      </div>
+    </div>
 
-    <a class="tracker-card t-sports reveal" href="sports.html" aria-label="Sports tracker">
+    <div class="tracker-card t-sports reveal" aria-label="Sports tracker">
       <span class="ic" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/>
@@ -216,10 +219,13 @@
       </span>
       <h3>Scores</h3>
       <p>Live NFL, NBA, MLB, NHL, and EPL scores. Tap a game to open the matchup page in your browser.</p>
-      <span class="arrow">Open Sports &rarr;</span>
-    </a>
+      <div class="card-links">
+        <a href="sports.html">Open Sports &rarr;</a>
+        <a href="https://github.com/bendawg2010/Scores" rel="noopener" target="_blank">bendawg2010/Scores</a>
+      </div>
+    </div>
 
-    <a class="tracker-card t-f1 reveal" href="f1.html" aria-label="F1 Live tracker">
+    <div class="tracker-card t-f1 reveal" aria-label="F1 Live tracker">
       <span class="ic" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <path d="M5 4v17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
@@ -228,9 +234,27 @@
         </svg>
       </span>
       <h3>F1 Live</h3>
-      <p>Live driver positions during a race. Lap times, gap to leader, and a quiet countdown when it&rsquo;s not race day.</p>
-      <span class="arrow">Open F1 Live &rarr;</span>
-    </a>
+      <p>Live driver positions, lap times, gap to leader. Powered by OpenF1.</p>
+      <div class="card-links">
+        <a href="f1.html">Open F1 Live &rarr;</a>
+        <a href="https://github.com/bendawg2010/F1Live" rel="noopener" target="_blank">bendawg2010/F1Live</a>
+      </div>
+    </div>
+
+    <div class="tracker-card t-sportsnews reveal" aria-label="Sports News tracker">
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M5 4h14v3a4 4 0 0 1-4 4 3 3 0 0 1-3 3 3 3 0 0 1-3-3 4 4 0 0 1-4-4V4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M10 16h4v2h2l1 3H7l1-3h2v-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <h3>Sports News</h3>
+      <p>Top sports headlines from ESPN, Fox Sports, BBC Sport, and CBS Sports. Tap to read.</p>
+      <div class="card-links">
+        <a href="sports-news.html">Open Sports News &rarr;</a>
+        <a href="https://github.com/bendawg2010/SportsNews" rel="noopener" target="_blank">bendawg2010/SportsNews</a>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -397,6 +421,7 @@
     <a href="index.html">News</a>
     <a href="sports.html">Sports</a>
     <a href="f1.html">F1 Live</a>
+    <a href="sports-news.html">Sports News</a>
     <a href="https://github.com/bendawg2010/NewsWidgets" rel="noopener">GitHub</a>
     <a href="#donate">Support</a>
     <a href="install.html">Install</a>
