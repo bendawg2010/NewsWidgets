@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+
+# Xcode build artifacts
+build/
+DerivedData/
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+
+# Generated Xcode project (regenerate with xcodegen)
+NewsWidgets.xcodeproj/
+
+# Release artifacts
+dist/
+
+# Remotion
+ad/node_modules/
+ad/out/
+ad/.cache/
+
+# Website assets are checked in EXCEPT the heavy mp4s (see release for downloads)
+website/assets/ad.mp4
+website/assets/ad-vertical.mp4
+
+# npm / node
+node_modules/
+npm-debug.log*
+
+# Editors
+.vscode/
+.idea/

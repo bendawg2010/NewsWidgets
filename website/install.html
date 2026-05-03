@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Install News Widgets — for macOS</title>
+<meta name="description" content="Step-by-step install guide for News Widgets on macOS. Free, open-source, and unsigned (so macOS will warn you — that is normal).">
+<meta name="theme-color" content="#06070d">
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<link rel="apple-touch-icon" href="assets/icon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bg-orbs" aria-hidden="true"></div>
+
+<!-- ============== NAV ============== -->
+<header class="nav">
+  <div class="container nav-row">
+    <a class="nav-brand" href="index.html" aria-label="News Widgets home">
+      <img src="assets/icon.svg" alt="">
+      <span>News Widgets</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="nav-link hide-sm" href="index.html#video">Watch the Ad</a>
+      <a class="nav-link hide-sm" href="index.html#donate">Support</a>
+      <a class="nav-link nav-oss" href="https://github.com/bendawg2010/NewsWidgets" rel="noopener" aria-label="Open source on GitHub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
+        </svg>
+        Open source
+      </a>
+      <a class="nav-cta" href="#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============== HEADER ============== -->
+<section class="install-hero container">
+  <h1>Install <span class="grad">News Widgets.</span></h1>
+  <p>Five short steps. The first time you launch, macOS will show a scary popup — that is expected, and the next section explains exactly why.</p>
+</section>
+
+<!-- ============== WARNING CALLOUT ============== -->
+<section class="container">
+  <div class="callout reveal" role="note" aria-label="Information about macOS Gatekeeper">
+    <div class="callout-head">
+      <span class="badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 9v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="17" r="1.1" fill="currentColor"/>
+          <path d="M10.3 3.5L2.6 17.2a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.5a2 2 0 0 0-3.4 0z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <div>
+        <div class="label">Heads up</div>
+      </div>
+    </div>
+    <p><strong>macOS will say &ldquo;this app is from an unidentified developer.&rdquo; That is normal.</strong></p>
+    <p><strong>News Widgets is NOT a virus.</strong> I (Ben) didn&rsquo;t pay Apple&rsquo;s $100/year Developer Program fee, so macOS shows a scary popup for indie apps. Big-tech apps don&rsquo;t get this popup because they pay Apple. The code is fully open-source on <a href="https://github.com/bendawg2010/NewsWidgets" rel="noopener">GitHub</a> &mdash; you can read every line.</p>
+    <p><strong>YOU MUST go to System Settings &rarr; Privacy &amp; Security &rarr; click &ldquo;Open Anyway&rdquo;</strong> the first time, OR right-click the app and choose &ldquo;Open&rdquo; &rarr; &ldquo;Open&rdquo; again. After that, it just works.</p>
+  </div>
+</section>
+
+<!-- ============== STEPS ============== -->
+<section id="download" class="container">
+  <div class="section-head reveal">
+    <h2>Step by step.</h2>
+    <p>About a minute, start to finish.</p>
+  </div>
+
+  <div class="steps">
+
+    <!-- ============ Step 1: Download ============ -->
+    <article class="step reveal">
+      <div class="num" aria-hidden="true">1</div>
+      <div class="step-body">
+        <h3>Download the app.</h3>
+        <p>One zipped bundle from the latest GitHub release. Universal binary — Apple Silicon and Intel.</p>
+        <div class="step-action">
+          <a class="btn btn-primary" href="https://github.com/bendawg2010/NewsWidgets/releases/latest/download/NewsWidgets.zip">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Download NewsWidgets.zip
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/bendawg2010/NewsWidgets/releases" rel="noopener">All releases</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Step 2: Drag to Applications ============ -->
+    <article class="step reveal">
+      <div class="num" aria-hidden="true">2</div>
+      <div class="step-body">
+        <h3>Unzip and drag to Applications.</h3>
+        <p>Double-click the .zip in your Downloads folder, then drag <strong>NewsWidgets.app</strong> into <strong>/Applications</strong>.</p>
+        <div class="step-mock">
+          <div class="finder" aria-hidden="true">
+            <div class="titlebar">
+              <span class="traffic"><span class="r"></span><span class="y"></span><span class="g"></span></span>
+              <span class="title">Applications</span>
+            </div>
+            <div class="body">
+              <div class="sidebar">
+                <div class="label">Favorites</div>
+                <div class="row"><span class="dot"></span>Downloads</div>
+                <div class="row"><span class="dot"></span>Desktop</div>
+                <div class="row"><span class="dot"></span>Documents</div>
+                <div class="label">Locations</div>
+                <div class="row active"><span class="dot"></span>Applications</div>
+              </div>
+              <div class="filearea">
+                <div class="file">
+                  <div class="ic"></div>
+                  <div class="name">Calendar</div>
+                </div>
+                <div class="file">
+                  <div class="ic"></div>
+                  <div class="name">Mail</div>
+                </div>
+                <div class="file highlight">
+                  <div class="ic app">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2.5c.7 4.6 2.4 6.3 7 7-4.6.7-6.3 2.4-7 7-.7-4.6-2.4-6.3-7-7 4.6-.7 6.3-2.4 7-7z" fill="#fff"/>
+                    </svg>
+                  </div>
+                  <div class="name">NewsWidgets</div>
+                </div>
+                <div class="file">
+                  <div class="ic"></div>
+                  <div class="name">Notes</div>
+                </div>
+                <div class="file">
+                  <div class="ic"></div>
+                  <div class="name">Safari</div>
+                </div>
+                <div class="file">
+                  <div class="ic"></div>
+                  <div class="name">System Settings</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Step 3: Double-click + dismiss ============ -->
+    <article class="step reveal">
+      <div class="num" aria-hidden="true">3</div>
+      <div class="step-body">
+        <h3>Double-click. macOS will block it. Click OK.</h3>
+        <p>This is Gatekeeper doing its job. Don&rsquo;t panic — just dismiss the dialog. We&rsquo;ll fix it permanently in the next step.</p>
+        <div class="step-mock" style="background: linear-gradient(180deg, #1c1d24, #14151b); padding: 18px 12px;">
+          <div class="alert" aria-hidden="true">
+            <div class="ic-wrap">
+              <div class="ic-app">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2.5c.7 4.6 2.4 6.3 7 7-4.6.7-6.3 2.4-7 7-.7-4.6-2.4-6.3-7-7 4.6-.7 6.3-2.4 7-7z" fill="#fff"/>
+                </svg>
+              </div>
+              <span class="ic-warn" aria-hidden="true">!</span>
+            </div>
+            <h4>&ldquo;NewsWidgets&rdquo; cannot be opened because it is from an unidentified developer.</h4>
+            <div class="body-text">macOS cannot verify that this app is free from malware. You can open it from Privacy &amp; Security in System Settings.</div>
+            <div class="buttons">
+              <span class="b">Move to Trash</span>
+              <span class="b primary">OK</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Step 4: Privacy & Security ============ -->
+    <article class="step reveal">
+      <div class="num" aria-hidden="true">4</div>
+      <div class="step-body">
+        <h3>Open Anyway.</h3>
+        <p>Open <strong>System Settings &rarr; Privacy &amp; Security</strong>. Scroll down to the &ldquo;Security&rdquo; section. You&rsquo;ll see a row mentioning NewsWidgets &mdash; click <strong>Open Anyway</strong>.</p>
+        <div class="step-mock">
+          <div class="psp" aria-hidden="true">
+            <div class="titlebar">
+              <span class="traffic"><span class="r"></span><span class="y"></span><span class="g"></span></span>
+              <span>Privacy &amp; Security</span>
+            </div>
+            <div class="body">
+              <h5>Security</h5>
+              <div class="row">
+                <div class="ic">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2.5c.7 4.6 2.4 6.3 7 7-4.6.7-6.3 2.4-7 7-.7-4.6-2.4-6.3-7-7 4.6-.7 6.3-2.4 7-7z" fill="#fff"/>
+                  </svg>
+                </div>
+                <div class="meta">
+                  <b>&ldquo;NewsWidgets&rdquo; was blocked from use because it is not from an identified developer.</b>
+                  <span>Allow apps downloaded from: App Store &amp; Known Developers</span>
+                </div>
+                <div class="spacer"></div>
+                <span class="open-anyway">Open Anyway</span>
+              </div>
+              <span class="annot">Click here</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Step 5: Add widgets ============ -->
+    <article class="step reveal">
+      <div class="num" aria-hidden="true">5</div>
+      <div class="step-body">
+        <h3>Drop them on your desktop.</h3>
+        <p>Right-click your desktop &rarr; <strong>Edit Widgets</strong>, find <strong>News Widgets</strong> in the picker, and drag &ldquo;AI Today&rdquo; and &ldquo;World News&rdquo; into place. That&rsquo;s it.</p>
+        <div class="step-mock">
+          <div class="widget-edit" aria-hidden="true">
+            <div class="picker">
+              <div class="head">
+                <img src="assets/icon.svg" alt="">
+                News Widgets
+              </div>
+              <div class="opt active">AI Today &mdash; Medium</div>
+              <div class="opt">AI Today &mdash; Large</div>
+              <div class="opt active">World News &mdash; Medium</div>
+              <div class="opt">World News &mdash; Large</div>
+            </div>
+            <div class="desktop">
+              <span class="arrow-drag">drag onto desktop</span>
+              <div class="mini">
+                <div class="h"><span class="i"></span>AI Today</div>
+                <div class="ph"></div>
+                <div class="ln"></div>
+                <div class="ln short"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== ONE-LINE INSTALLER ============== -->
+<section class="container">
+  <div class="installer reveal">
+    <h3>One-line installer (advanced).</h3>
+    <p>If you trust the script, this downloads and installs in one step.</p>
+    <div class="code-block" id="installer-code">
+      <button type="button" class="copy" data-copy="curl -L https://github.com/bendawg2010/NewsWidgets/releases/latest/download/install.sh | bash" aria-label="Copy install command">Copy</button><span class="prompt">$ </span>curl -L https://github.com/bendawg2010/NewsWidgets/releases/latest/download/install.sh | bash
+    </div>
+  </div>
+</section>
+
+<!-- ============== TROUBLESHOOTING ============== -->
+<section class="container">
+  <div class="trouble reveal">
+    <h3>Troubleshooting.</h3>
+
+    <details>
+      <summary>
+        I clicked &ldquo;Open Anyway&rdquo; but nothing happened.
+        <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div>
+        <p>macOS pops up one more confirmation. Look for a smaller dialog asking you to enter your password or use Touch ID, then click <strong>Open</strong>. If you don&rsquo;t see it, switch back to System Settings &rarr; Privacy &amp; Security and try again.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        My widgets are blank or not refreshing.
+        <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div>
+        <p>Open the main NewsWidgets app once and let it pull a fresh feed. macOS WidgetKit caches the timeline, so the desktop widget can take a minute to update on first launch. If it&rsquo;s still blank after that, check that you have an active internet connection and try removing &amp; re-adding the widget.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        I&rsquo;m on macOS Sonoma or older.
+        <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div>
+        <p>News Widgets is built for the new desktop-widget system in <strong>macOS Tahoe</strong>. Older versions of macOS won&rsquo;t support the desktop placement, but the in-app reader still works. Upgrade if you can &mdash; the desktop experience is the whole point.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        I want to add or remove a source.
+        <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div>
+        <p>Open the NewsWidgets app, go to <strong>Settings &rarr; Sources</strong>, and toggle any source on or off. Add a custom RSS feed by pasting its URL at the bottom of the list. Changes apply to the desktop widget on the next refresh (within a few minutes).</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        How do I uninstall?
+        <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div>
+        <p>Drag <code>/Applications/NewsWidgets.app</code> to the Trash. To wipe cached articles too, also delete <code>~/Library/Containers/com.bendawg2010.NewsWidgets</code>.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        Is there a Homebrew cask?
+        <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div>
+        <p>Not yet. Once the app is signed and notarized, a Homebrew cask is on the roadmap. Star the repo to be notified.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container foot-row">
+    <a class="foot-brand" href="index.html">
+      <img src="assets/icon.svg" alt="">
+      <span>News Widgets</span>
+    </a>
+    <span class="foot-spacer"></span>
+    <span>&copy; 2026 &middot; Free forever.</span>
+    <a href="https://github.com/bendawg2010/NewsWidgets" rel="noopener">GitHub</a>
+    <a href="index.html">Home</a>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

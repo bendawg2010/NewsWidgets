@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>News Widgets — Today, summarized.</title>
+<meta name="description" content="Two beautiful native macOS widgets for AI news and world news. Free, open-source, and refreshed automatically. Tap to read in-app.">
+<meta name="theme-color" content="#06070d">
+<meta property="og:title" content="News Widgets — Today, summarized.">
+<meta property="og:description" content="Two beautiful native widgets for your macOS desktop. AI news + world news, refreshed automatically.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/icon.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<link rel="apple-touch-icon" href="assets/icon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bg-orbs" aria-hidden="true"></div>
+
+<!-- ============== NAV ============== -->
+<header class="nav">
+  <div class="container nav-row">
+    <a class="nav-brand" href="index.html" aria-label="News Widgets home">
+      <img src="assets/icon.svg" alt="">
+      <span>News Widgets</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="nav-link hide-sm" href="#video">Watch the Ad</a>
+      <a class="nav-link hide-sm" href="#donate">Support</a>
+      <a class="nav-link nav-oss" href="https://github.com/bendawg2010/NewsWidgets" rel="noopener" aria-label="Open source on GitHub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
+        </svg>
+        Open source
+      </a>
+      <a class="nav-cta" href="install.html">Install</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============== HERO ============== -->
+<section class="hero container">
+  <span class="eyebrow eyebrow-oss">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
+    </svg>
+    100% open source · MIT licensed · for macOS Tahoe
+  </span>
+  <h1>Today, <span class="grad">summarized.</span></h1>
+  <p class="lead">Two beautiful native widgets for your macOS desktop. AI news plus world news, refreshed automatically. Tap to read in-app.</p>
+  <div class="hero-ctas">
+    <a class="btn btn-primary btn-lg" href="install.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Install for macOS
+    </a>
+    <a class="btn btn-ghost btn-lg" href="https://github.com/bendawg2010/NewsWidgets" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
+      </svg>
+      View on GitHub
+    </a>
+  </div>
+
+  <!-- ===== Hero widgets desktop mockup ===== -->
+  <div class="desktop-stage" aria-hidden="false">
+    <div class="widgets-row">
+
+      <!-- AI Today widget -->
+      <article class="widget" aria-label="AI Today widget preview">
+        <header class="w-head">
+          <span class="w-icon ai" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2.5c.7 4.6 2.4 6.3 7 7-4.6.7-6.3 2.4-7 7-.7-4.6-2.4-6.3-7-7 4.6-.7 6.3-2.4 7-7z" fill="#fff"/>
+              <path d="M19 14c.4 2 1.2 2.8 3.2 3.2-2 .4-2.8 1.2-3.2 3.2-.4-2-1.2-2.8-3.2-3.2 2-.4 2.8-1.2 3.2-3.2z" fill="#fff" opacity=".88"/>
+            </svg>
+          </span>
+          <span class="w-title">AI Today</span>
+          <span class="w-time">9:41 AM</span>
+        </header>
+
+        <div class="w-hero ai">
+          <span class="w-badge ai">Top Story</span>
+          <p class="w-headline">OpenAI ships GPT-6 with native video reasoning, undercutting Google on price</p>
+        </div>
+
+        <div class="w-list">
+          <div class="w-row">
+            <div class="w-meta">
+              <span class="src">TechCrunch</span>
+              <span class="dot"></span>
+              <span class="time">12 min</span>
+            </div>
+            <p class="w-line">Anthropic hits $400B valuation as enterprise revenue triples year-over-year</p>
+          </div>
+          <div class="w-row">
+            <div class="w-meta">
+              <span class="src purple">The Verge</span>
+              <span class="dot"></span>
+              <span class="time">38 min</span>
+            </div>
+            <p class="w-line">Apple Intelligence adds offline image generation in surprise OS update</p>
+          </div>
+          <div class="w-row">
+            <div class="w-meta">
+              <span class="src blue">Ars Technica</span>
+              <span class="dot"></span>
+              <span class="time">1 hr</span>
+            </div>
+            <p class="w-line">Nvidia debuts Rubin Ultra GPUs as AI compute demand outpaces every forecast</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- World News widget -->
+      <article class="widget" aria-label="World News widget preview">
+        <header class="w-head">
+          <span class="w-icon news" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3.5 5h13a1.5 1.5 0 0 1 1.5 1.5V18a1.5 1.5 0 0 0 1.5 1.5h.5a1.5 1.5 0 0 0 1.5-1.5V8.5h-2M3.5 5v13a1.5 1.5 0 0 0 1.5 1.5h13.5" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M6 9h8M6 12h8M6 15h5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="w-title">World News</span>
+          <span class="w-time">9:41 AM</span>
+        </header>
+
+        <div class="w-hero news">
+          <span class="w-badge news">Breaking</span>
+          <p class="w-headline">Senate passes sweeping budget framework after marathon overnight session</p>
+        </div>
+
+        <div class="w-list">
+          <div class="w-row">
+            <div class="w-meta">
+              <span class="src red">Reuters</span>
+              <span class="dot"></span>
+              <span class="time">8 min</span>
+            </div>
+            <p class="w-line">Markets open higher in Tokyo as yen rebounds on rate-hike signal from BOJ</p>
+          </div>
+          <div class="w-row">
+            <div class="w-meta">
+              <span class="src amber">BBC</span>
+              <span class="dot"></span>
+              <span class="time">42 min</span>
+            </div>
+            <p class="w-line">EU regulators outline new framework for cross-border data flows with the UK</p>
+          </div>
+          <div class="w-row">
+            <div class="w-meta">
+              <span class="src teal">AP</span>
+              <span class="dot"></span>
+              <span class="time">1 hr</span>
+            </div>
+            <p class="w-line">SpaceX Starship completes first crewed orbital test, lands intact in Texas</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== VIDEO ============== -->
+<section id="video" class="container">
+  <div class="section-head reveal">
+    <h2>See it in <span class="grad">action.</span></h2>
+    <p>A quick look at how News Widgets feels on a real macOS desktop.</p>
+  </div>
+  <div class="video-frame reveal">
+    <span class="glow" aria-hidden="true"></span>
+    <div class="inner">
+      <video src="assets/ad.mp4" autoplay loop muted playsinline preload="metadata" poster="" aria-label="News Widgets product video"></video>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FEATURES ============== -->
+<section class="container">
+  <div class="section-head reveal">
+    <h2>Native &amp; effortless.</h2>
+    <p>Built with SwiftUI and the WidgetKit timeline. Just sits on your desktop and stays current.</p>
+  </div>
+  <div class="feature-grid">
+    <article class="feature reveal">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="9" cy="11" r="2" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M3 17l5-4 4 3 4-5 5 6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Real photos.</h3>
+      <p>Pulled live from each article. No stock illustrations, no placeholder gradients, no AI slop.</p>
+    </article>
+
+    <article class="feature reveal">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M5 6h14M5 10h10M5 14h14M5 18h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Real summaries.</h3>
+      <p>Headlines from sources you trust. The widget shows the top story plus three more, refreshed all day.</p>
+    </article>
+
+    <article class="feature reveal">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <h3>Tap to dive in.</h3>
+      <p>Opens the full article in the built-in reader. Distraction-free, dark-mode native, no popups.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============== SOURCES ============== -->
+<section class="container">
+  <div class="section-head reveal">
+    <h2>Sources you <span class="grad">already read.</span></h2>
+    <p>Two channels, hand-picked. Choose what shows up.</p>
+  </div>
+
+  <div class="sources">
+    <div class="sources-col reveal">
+      <h3><span class="ai-dot"></span>AI Today</h3>
+      <div class="chip-list">
+        <span class="chip">TechCrunch</span>
+        <span class="chip">The Verge</span>
+        <span class="chip">Ars Technica</span>
+        <span class="chip">VentureBeat</span>
+        <span class="chip">MIT Tech Review</span>
+        <span class="chip">Hacker News</span>
+      </div>
+    </div>
+
+    <div class="sources-col reveal">
+      <h3><span class="news-dot"></span>World News</h3>
+      <div class="chip-list">
+        <span class="chip">Fox News</span>
+        <span class="chip">BBC</span>
+        <span class="chip">Reuters</span>
+        <span class="chip">AP</span>
+        <span class="chip">WSJ</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="sources-caption reveal">Pick what shows up. Add or remove anytime in Settings.</p>
+</section>
+
+<!-- ============== FREE / OSS ============== -->
+<section class="container free">
+  <div class="free-card reveal">
+    <span class="oss-pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
+      </svg>
+      Open Source
+    </span>
+    <h2>Free. Open. Yours.</h2>
+    <div class="badges">
+      <span>MIT licensed</span>
+      <span>No accounts</span>
+      <span>No tracking</span>
+      <span>No ads</span>
+      <span>No telemetry</span>
+    </div>
+    <p>Every line of code is on GitHub. Read it, fork it, audit it, build your own. Built by one person who wanted better widgets — and figured everyone else might too.</p>
+    <a class="btn btn-ghost btn-md" href="https://github.com/bendawg2010/NewsWidgets" rel="noopener" style="margin-top:14px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
+      </svg>
+      Browse the source on GitHub
+    </a>
+  </div>
+</section>
+
+<!-- ============== DONATE / SUPPORT ============== -->
+<section id="donate" class="container donate">
+  <div class="donate-card reveal">
+    <span class="oss-pill heart">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      Support open-source projects
+    </span>
+    <h2>Like it? <span class="grad">Buy me a coffee.</span></h2>
+    <p>News Widgets is free forever. If it saved you the cost of a paid news widget app, a small tip helps cover the time and the (eventual) Apple Developer fee that would let me ship signed builds.</p>
+    <div class="donate-ctas">
+      <a class="btn btn-paypal btn-lg" href="https://www.paypal.com/donate?business=bendawg2010@gmail.com&item_name=News+Widgets&currency_code=USD" rel="noopener" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M7.18 21h-4l3-15h6.5c2.5 0 4.5 2 4 4.5-.5 3-3 5-6 5h-3.5l-.5 5.5zM9.5 9h2.5c1.5 0 2.5-1 2.5-2.5S13.5 4 12 4H10l-.5 5z"/>
+        </svg>
+        Donate via PayPal
+      </a>
+      <a class="btn btn-ghost btn-lg" href="https://github.com/sponsors/bendawg2010" rel="noopener" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff5cb6" aria-hidden="true">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        Sponsor on GitHub
+      </a>
+    </div>
+    <p class="donate-fine">Every donation goes straight to keeping this and future open-source projects free. Thank you.</p>
+  </div>
+</section>
+
+<!-- ============== BIG CTA ============== -->
+<section class="container cta-band">
+  <div class="reveal">
+    <h2>Get <span class="grad">News Widgets.</span></h2>
+    <p>One download, two widgets, every story you care about.</p>
+    <a class="btn btn-primary btn-lg" href="install.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Install for macOS
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container foot-row">
+    <a class="foot-brand" href="index.html">
+      <img src="assets/icon.svg" alt="">
+      <span>News Widgets</span>
+    </a>
+    <span class="foot-spacer"></span>
+    <span>&copy; 2026 &middot; Free &amp; open source forever.</span>
+    <a href="https://github.com/bendawg2010/NewsWidgets" rel="noopener">GitHub</a>
+    <a href="#donate">Donate</a>
+    <a href="install.html">Install</a>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

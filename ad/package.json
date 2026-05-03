@@ -1,0 +1,21 @@
+{
+  "name": "newswidgets-ad",
+  "version": "1.0.0",
+  "description": "Promo video for the News Widgets macOS app",
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion render NewsWidgetsAd out/ad.mp4 --concurrency=4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.456",
+    "@remotion/transitions": "4.0.456",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.456"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="News Widgets app icon">
+  <defs>
+    <linearGradient id="appGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ED4799"/>
+      <stop offset="55%" stop-color="#A856F7"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="iconShine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="iconGlow" cx="0.5" cy="0.25" r="0.7">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Rounded square (22% radius => 56.32) -->
+  <rect x="0" y="0" width="256" height="256" rx="56" ry="56" fill="url(#appGrad)"/>
+  <rect x="0" y="0" width="256" height="256" rx="56" ry="56" fill="url(#iconGlow)"/>
+  <rect x="0" y="0" width="256" height="256" rx="56" ry="56" fill="url(#iconShine)"/>
+  <!-- 3 sparkles, SF-Symbol style 4-pointed stars -->
+  <g fill="#ffffff">
+    <!-- Big sparkle -->
+    <path d="M128 56
+             C 132 86, 144 98, 174 102
+             C 144 106, 132 118, 128 148
+             C 124 118, 112 106, 82 102
+             C 112 98, 124 86, 128 56 Z"/>
+    <!-- Top-right sparkle -->
+    <path d="M192 90
+             C 194 104, 200 110, 214 112
+             C 200 114, 194 120, 192 134
+             C 190 120, 184 114, 170 112
+             C 184 110, 190 104, 192 90 Z" opacity="0.92"/>
+    <!-- Bottom-left sparkle -->
+    <path d="M86 168
+             C 89 184, 96 191, 112 194
+             C 96 197, 89 204, 86 220
+             C 83 204, 76 197, 60 194
+             C 76 191, 83 184, 86 168 Z" opacity="0.95"/>
+  </g>
+</svg>
