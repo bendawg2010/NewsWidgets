@@ -78,6 +78,34 @@ export const OutroScene: React.FC = () => {
         >
           For macOS Tahoe.
         </div>
+        <div
+          style={{
+            marginTop: 36,
+            padding: "14px 28px",
+            borderRadius: 999,
+            background: `linear-gradient(135deg, #ED4799, #A856F7 60%, #3B82F6)`,
+            boxShadow: "0 12px 48px rgba(168,85,247,0.45)",
+            opacity: tagSpring,
+            fontSize: 22,
+            fontWeight: 700,
+            letterSpacing: -0.5,
+          }}
+        >
+          newswidgets.pages.dev
+        </div>
+        <div
+          style={{
+            marginTop: 12,
+            opacity: tagSpring,
+            fontSize: 16,
+            fontWeight: 600,
+            color: COLORS.textSecondary,
+            fontFamily: 'ui-monospace, "SF Mono", Menlo, monospace',
+            letterSpacing: -0.2,
+          }}
+        >
+          ★ github.com/bendawg2010/NewsWidgets
+        </div>
       </AbsoluteFill>
     </AbsoluteFill>
   );

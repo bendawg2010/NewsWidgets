@@ -90,7 +90,21 @@ export const VerticalOutroScene: React.FC = () => {
             letterSpacing: -0.5,
           }}
         >
-          github.com/bendawg2010/NewsWidgets
+          newswidgets.pages.dev
+        </div>
+        <div
+          style={{
+            marginTop: 16,
+            opacity: urlSpring,
+            transform: `translateY(${interpolate(urlSpring, [0, 1], [12, 0])}px)`,
+            fontSize: 22,
+            fontWeight: 600,
+            color: COLORS.textSecondary,
+            fontFamily: 'ui-monospace, "SF Mono", Menlo, monospace',
+            letterSpacing: -0.2,
+          }}
+        >
+          ★ github.com/bendawg2010/NewsWidgets
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

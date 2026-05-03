@@ -304,6 +304,20 @@ export const SportsOutroScene: React.FC<{ vertical?: boolean }> = ({
         >
           scorewidget.pages.dev
         </div>
+        <div
+          style={{
+            marginTop: vertical ? 16 : 12,
+            opacity: urlSp,
+            transform: `translateY(${interpolate(urlSp, [0, 1], [12, 0])}px)`,
+            fontSize: vertical ? 20 : 16,
+            fontWeight: 600,
+            color: COLORS.textSecondary,
+            fontFamily: 'ui-monospace, "SF Mono", Menlo, monospace',
+            letterSpacing: -0.2,
+          }}
+        >
+          ★ github.com/bendawg2010/Scores
+        </div>
       </AbsoluteFill>
     </AbsoluteFill>
   );
