@@ -69,12 +69,13 @@ npx remotion render NewsWidgetsAdVertical  out/ad-vertical.mp4  # 1080×1920
 
 ## Support
 
-News Widgets is free forever. The two best ways to help cost zero dollars:
+News Widgets is free forever. If it saves you the cost of a paid widget app:
 
+- 💸 **[Tip via Cash App → $Dryeetsolutions](https://cash.app/$Dryeetsolutions)**
 - ⭐ **[Star the repo](https://github.com/bendawg2010/NewsWidgets)** — boosts visibility on GitHub
 - 📣 **[Share it](https://twitter.com/intent/tweet?text=Just+installed+News+Widgets+%E2%80%94+a+free%2C+open-source+macOS+widget+app.&url=https%3A%2F%2Fnewswidgets.pages.dev)** — tell a friend who'd like better widgets
 
-A tip jar (Cash App / crypto / Ko-fi) will be added once one is set up.
+100% goes to keeping this and future open-source projects free.
 
 ## License
 
