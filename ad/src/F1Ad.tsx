@@ -12,6 +12,7 @@ import {
   F1_FEATURES_TOTAL, F1OutroScene,
 } from "./scenes/F1Scenes";
 import { F1TrackScene } from "./scenes/F1TrackScene";
+import { F1TelemetryScene } from "./scenes/F1TelemetryScene";
 
 export const F1_FPS = 30;
 const F1_MUSIC = "f1.mp3";
@@ -22,16 +23,17 @@ export const F1_H_WIDTH = 1920;
 export const F1_H_HEIGHT = 1080;
 
 const H_HOOK = 2.6 * F1_FPS;
-const H_REVEAL = 4.0 * F1_FPS;
-const H_TRACK = 4.5 * F1_FPS;
+const H_REVEAL = 3.5 * F1_FPS;
+const H_TELEMETRY = 5.0 * F1_FPS;
+const H_TRACK = 4.0 * F1_FPS;
 const H_FEATURES = F1_FEATURES_TOTAL;
 const H_OUTRO = 3.0 * F1_FPS;
 const FADE = 18;
 const SLIDE_T = 14;
 
-// 4 transitions: 1 fade + 1 slide + 1 fade + 1 fade
+// 5 transitions: 1 fade + 1 slide + 1 fade + 1 fade + 1 fade
 export const F1_H_DURATION =
-  H_HOOK + H_REVEAL + H_TRACK + H_FEATURES + H_OUTRO - FADE * 3 - SLIDE_T;
+  H_HOOK + H_REVEAL + H_TELEMETRY + H_TRACK + H_FEATURES + H_OUTRO - FADE * 4 - SLIDE_T;
 
 export const F1AdHorizontal: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
@@ -59,6 +61,11 @@ export const F1AdHorizontal: React.FC = () => (
         timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE_T })}
       />
 
+      <TransitionSeries.Sequence durationInFrames={H_TELEMETRY}>
+        <F1TelemetryScene />
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: FADE })} />
+
       <TransitionSeries.Sequence durationInFrames={H_TRACK}>
         <F1TrackScene />
       </TransitionSeries.Sequence>
@@ -82,13 +89,14 @@ export const F1_V_WIDTH = 1080;
 export const F1_V_HEIGHT = 1920;
 
 const V_HOOK = 2.6 * F1_FPS;
-const V_REVEAL = 4.0 * F1_FPS;
-const V_TRACK = 4.5 * F1_FPS;
+const V_REVEAL = 3.5 * F1_FPS;
+const V_TELEMETRY = 5.0 * F1_FPS;
+const V_TRACK = 4.0 * F1_FPS;
 const V_FEATURES = F1_FEATURES_TOTAL;
 const V_OUTRO = 3.0 * F1_FPS;
 
 export const F1_V_DURATION =
-  V_HOOK + V_REVEAL + V_TRACK + V_FEATURES + V_OUTRO - FADE * 3 - SLIDE_T;
+  V_HOOK + V_REVEAL + V_TELEMETRY + V_TRACK + V_FEATURES + V_OUTRO - FADE * 4 - SLIDE_T;
 
 export const F1AdVertical: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
@@ -115,6 +123,11 @@ export const F1AdVertical: React.FC = () => (
         presentation={slide({ direction: "from-bottom" })}
         timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE_T })}
       />
+
+      <TransitionSeries.Sequence durationInFrames={V_TELEMETRY}>
+        <F1TelemetryScene vertical />
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: FADE })} />
 
       <TransitionSeries.Sequence durationInFrames={V_TRACK}>
         <F1TrackScene vertical />

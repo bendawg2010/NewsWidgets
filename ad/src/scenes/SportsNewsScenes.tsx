@@ -308,7 +308,7 @@ export const SNOutroScene: React.FC<{ vertical?: boolean }> = ({ vertical = fals
           transform: `translateY(${interpolate(urlSp, [0, 1], [12, 0])}px)`,
           fontSize: vertical ? 30 : 24, fontWeight: 700, letterSpacing: -0.5,
         }}>
-          sportsnews.pages.dev
+          sportsnewswidget.pages.dev
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

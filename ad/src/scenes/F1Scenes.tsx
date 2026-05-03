@@ -278,7 +278,7 @@ export const F1OutroScene: React.FC<{ vertical?: boolean }> = ({ vertical = fals
             fontWeight: 700, letterSpacing: -0.5,
           }}
         >
-          f1live.pages.dev
+          f1widget.pages.dev
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

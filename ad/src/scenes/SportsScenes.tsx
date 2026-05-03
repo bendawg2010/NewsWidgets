@@ -302,7 +302,7 @@ export const SportsOutroScene: React.FC<{ vertical?: boolean }> = ({
             fontWeight: 700, letterSpacing: -0.5,
           }}
         >
-          scores.pages.dev
+          scorewidget.pages.dev
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
