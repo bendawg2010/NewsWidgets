@@ -6,7 +6,7 @@ Two beautiful native macOS widgets — **AI Today** and **News** — that pull l
 
 > Built for **macOS Tahoe** (macOS 14 deployment target).
 
-**Website:** [newswidgets.pages.dev](https://newswidgets.pages.dev) · **Install:** [newswidgets.pages.dev/install.html](https://newswidgets.pages.dev/install.html) · **Donate:** [PayPal](https://www.paypal.com/donate?business=bendawg2010@gmail.com&item_name=News+Widgets&currency_code=USD) · [GitHub Sponsors](https://github.com/sponsors/bendawg2010)
+**Website:** [newswidgets.pages.dev](https://newswidgets.pages.dev) · **Install:** [newswidgets.pages.dev/install.html](https://newswidgets.pages.dev/install.html) · **Donate:** [PayPal]() · [GitHub Sponsors](https://github.com/sponsors/bendawg2010)
 
 ---
 
@@ -67,14 +67,14 @@ npx remotion render NewsWidgetsAd          out/ad.mp4           # 1920×1080
 npx remotion render NewsWidgetsAdVertical  out/ad-vertical.mp4  # 1080×1920
 ```
 
-## Donate
+## Support
 
-If News Widgets saved you the cost of a paid news widget app, a small tip helps cover the time and the (eventual) Apple Developer fee that would let me ship signed builds:
+News Widgets is free forever. The two best ways to help cost zero dollars:
 
-- [PayPal donate](https://www.paypal.com/donate?business=bendawg2010@gmail.com&item_name=News+Widgets&currency_code=USD)
-- [Sponsor on GitHub](https://github.com/sponsors/bendawg2010)
+- ⭐ **[Star the repo](https://github.com/bendawg2010/NewsWidgets)** — boosts visibility on GitHub
+- 📣 **[Share it](https://twitter.com/intent/tweet?text=Just+installed+News+Widgets+%E2%80%94+a+free%2C+open-source+macOS+widget+app.&url=https%3A%2F%2Fnewswidgets.pages.dev)** — tell a friend who'd like better widgets
 
-Every donation goes straight to keeping this and future open-source projects free.
+A tip jar (Cash App / crypto / Ko-fi) will be added once one is set up.
 
 ## License
 

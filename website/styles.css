@@ -1431,3 +1431,45 @@ footer {
   padding: 9px 18px;
   font-size: 14px;
 }
+
+/* ==================== TOP-NAV DONATE BUTTON ==================== */
+.nav-donate {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+  background: linear-gradient(180deg, #ffd93b 0%, #ffcc00 100%);
+  color: #003087;
+  border: 1px solid rgba(0, 48, 135, 0.18);
+  box-shadow: 0 4px 14px rgba(255, 204, 0, 0.32);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.nav-donate:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(255, 204, 0, 0.45);
+}
+
+/* ==================== TOP-NAV STAR BUTTON ==================== */
+.nav-star {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+  background: linear-gradient(135deg, #ED4799 0%, #A856F7 55%, #3B82F6 100%);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 4px 14px rgba(168, 86, 247, 0.32);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.nav-star:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(168, 86, 247, 0.55);
+}
