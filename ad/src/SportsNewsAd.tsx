@@ -9,9 +9,12 @@ import { slide } from "@remotion/transitions/slide";
 import {
   SNHookScene, SNRevealScene, SNFeaturesScene, SN_FEATURES_TOTAL, SNOutroScene,
 } from "./scenes/SportsNewsScenes";
+import { Watermark } from "./components/Watermark";
 
 export const SN_FPS = 30;
 const SN_MUSIC = "sportsnews.mp3";
+const SN_URL = "sportsnewswidget.pages.dev";
+const SN_ACCENT = "#1FA85B";
 
 // --- Horizontal --------------------------------------------------------
 
@@ -63,6 +66,7 @@ export const SportsNewsAdHorizontal: React.FC = () => (
         <SNOutroScene />
       </TransitionSeries.Sequence>
     </TransitionSeries>
+    <Watermark url={SN_URL} accentColor={SN_ACCENT} />
   </AbsoluteFill>
 );
 
@@ -114,5 +118,6 @@ export const SportsNewsAdVertical: React.FC = () => (
         <SNOutroScene vertical />
       </TransitionSeries.Sequence>
     </TransitionSeries>
+    <Watermark url={SN_URL} accentColor={SN_ACCENT} vertical />
   </AbsoluteFill>
 );

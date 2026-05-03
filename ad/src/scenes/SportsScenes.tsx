@@ -10,17 +10,31 @@ import {
 import { Wallpaper } from "../components/Wallpaper";
 import { COLORS, FONT_STACK } from "../tokens";
 import { SportsWidgetMock, SportsGame, SPORTS_GREEN } from "../widgets/SportsWidgetMock";
+import liveData from "../live-data.json";
 
 const SPORTS_GRADIENT = `linear-gradient(135deg, ${SPORTS_GREEN}, #0d8c47)`;
 
-export const SAMPLE_GAMES: SportsGame[] = [
+// Live ESPN scoreboards baked in at render time by scripts/fetch-live-data.ts.
+// Falls back to a sensible mock if the fetcher couldn't reach ESPN.
+const FALLBACK_GAMES: SportsGame[] = [
   { league: "NBA", leagueColor: "#C8102E", teams: "BOS 112 @ LAL 108", status: "Q4 2:14",  isLive: true  },
   { league: "NFL", leagueColor: "#013369", teams: "SEA 29 @ NE 13",    status: "Final"                    },
   { league: "MLB", leagueColor: "#0E3386", teams: "NYY 5 @ BOS 3",     status: "Top 7th",  isLive: true  },
   { league: "NHL", leagueColor: "#000000", teams: "TOR 4 @ MTL 1",     status: "8:00 PM EDT"             },
 ];
 
+export const SAMPLE_GAMES: SportsGame[] = (liveData.espn || []).length > 0
+  ? liveData.espn.slice(0, 4).map((g: any) => ({
+      league: g.league,
+      leagueColor: g.leagueColor,
+      teams: `${g.awayAbbrev} ${g.awayScore ?? "-"} @ ${g.homeAbbrev} ${g.homeScore ?? "-"}`,
+      status: g.status,
+      isLive: g.isLive,
+    }))
+  : FALLBACK_GAMES;
+
 export const SAMPLE_GAMES_LIVE = SAMPLE_GAMES.filter(g => g.isLive).length;
+export const FETCHED_AT = liveData.fetchedAt as string;
 
 // MARK: - Sports wallpaper (green tint)
 

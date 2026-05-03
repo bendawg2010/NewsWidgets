@@ -11,8 +11,11 @@ import {
   SportsHookScene, SportsRevealScene, SportsFeaturesScene,
   SPORTS_FEATURES_TOTAL, SportsOutroScene,
 } from "./scenes/SportsScenes";
+import { Watermark } from "./components/Watermark";
 
 export const SPORTS_FPS = 30;
+const SPORTS_URL = "scorewidget.pages.dev";
+const SPORTS_ACCENT = "#34C759";
 
 // --- Horizontal --------------------------------------------------------
 
@@ -64,6 +67,7 @@ export const SportsAdHorizontal: React.FC = () => (
         <SportsOutroScene />
       </TransitionSeries.Sequence>
     </TransitionSeries>
+    <Watermark url={SPORTS_URL} accentColor={SPORTS_ACCENT} />
   </AbsoluteFill>
 );
 
@@ -115,5 +119,6 @@ export const SportsAdVertical: React.FC = () => (
         <SportsOutroScene vertical />
       </TransitionSeries.Sequence>
     </TransitionSeries>
+    <Watermark url={SPORTS_URL} accentColor={SPORTS_ACCENT} vertical />
   </AbsoluteFill>
 );

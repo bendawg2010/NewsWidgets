@@ -10,16 +10,33 @@ import {
 import { Wallpaper } from "../components/Wallpaper";
 import { COLORS, FONT_STACK } from "../tokens";
 import { F1WidgetMock, F1Driver, F1_RED } from "../widgets/F1WidgetMock";
+import liveData from "../live-data.json";
 
 const F1_GRADIENT = `linear-gradient(135deg, #FF3333 0%, ${F1_RED} 100%)`;
 
-export const SAMPLE_DRIVERS: F1Driver[] = [
+const FALLBACK_DRIVERS: F1Driver[] = [
   { pos: 1, abbrev: "VER", team: "Red Bull",   teamColor: "#3671C6", lastLap: "1:30.512", gap: "LEADER"  },
   { pos: 2, abbrev: "NOR", team: "McLaren",    teamColor: "#FF8000", lastLap: "1:30.834", gap: "+0.4s"   },
   { pos: 3, abbrev: "LEC", team: "Ferrari",    teamColor: "#E80020", lastLap: "1:31.022", gap: "+1.8s"   },
   { pos: 4, abbrev: "PIA", team: "McLaren",    teamColor: "#FF8000", lastLap: "1:31.156", gap: "+3.6s"   },
   { pos: 5, abbrev: "HAM", team: "Mercedes",   teamColor: "#27F4D2", lastLap: "1:31.420", gap: "+5.1s"   },
 ];
+
+// Live OpenF1 standings baked in at render time
+export const SAMPLE_DRIVERS: F1Driver[] = (liveData.f1?.drivers || []).length > 0
+  ? liveData.f1.drivers.slice(0, 5).map((d: any) => ({
+      pos: d.pos,
+      abbrev: d.abbrev,
+      team: d.team,
+      teamColor: d.teamColor,
+      lastLap: d.lastLap,
+      gap: d.gap || "",
+    }))
+  : FALLBACK_DRIVERS;
+
+export const F1_CIRCUIT = liveData.f1?.circuit || "Miami";
+export const F1_SESSION = liveData.f1?.sessionName || "Race";
+export const F1_IS_LIVE = liveData.f1?.isLive ?? true;
 
 // MARK: - F1 wallpaper (red tint)
 

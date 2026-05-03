@@ -11,6 +11,7 @@ import {
   linearTiming,
   springTiming,
 } from "@remotion/transitions";
+import { Watermark } from "./components/Watermark";
 import { fade } from "@remotion/transitions/fade";
 import { slide } from "@remotion/transitions/slide";
 
@@ -113,6 +114,7 @@ export const NewsWidgetsAd: React.FC = () => {
           <OutroScene />
         </TransitionSeries.Sequence>
       </TransitionSeries>
+    <Watermark url="newswidgets.pages.dev" accentColor="#A856F7" />
     </AbsoluteFill>
   );
 };

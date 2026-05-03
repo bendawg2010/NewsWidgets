@@ -1,0 +1,142 @@
+{
+  "fetchedAt": "2026-05-03T22:49:00.814Z",
+  "espn": [
+    {
+      "league": "NHL",
+      "leagueColor": "#000000",
+      "awayAbbrev": "MTL",
+      "homeAbbrev": "TB",
+      "awayScore": 1,
+      "homeScore": 0,
+      "status": "End of 1st",
+      "isLive": true,
+      "isFinal": false
+    },
+    {
+      "league": "NHL",
+      "leagueColor": "#000000",
+      "awayAbbrev": "MIN",
+      "homeAbbrev": "COL",
+      "awayScore": 0,
+      "homeScore": 0,
+      "status": "5/3 - 9:00 PM EDT",
+      "isLive": false,
+      "isFinal": false
+    },
+    {
+      "league": "NBA",
+      "leagueColor": "#C8102E",
+      "awayAbbrev": "TOR",
+      "homeAbbrev": "CLE",
+      "awayScore": 0,
+      "homeScore": 0,
+      "status": "5/3 - 7:30 PM EDT",
+      "isLive": false,
+      "isFinal": false
+    },
+    {
+      "league": "MLB",
+      "leagueColor": "#0E3386",
+      "awayAbbrev": "TEX",
+      "homeAbbrev": "DET",
+      "awayScore": 0,
+      "homeScore": 0,
+      "status": "5/3 - 7:20 PM EDT",
+      "isLive": false,
+      "isFinal": false
+    },
+    {
+      "league": "NFL",
+      "leagueColor": "#013369",
+      "awayAbbrev": "SEA",
+      "homeAbbrev": "NE",
+      "awayScore": 29,
+      "homeScore": 13,
+      "status": "Final",
+      "isLive": false,
+      "isFinal": true
+    },
+    {
+      "league": "NBA",
+      "leagueColor": "#C8102E",
+      "awayAbbrev": "ORL",
+      "homeAbbrev": "DET",
+      "awayScore": 94,
+      "homeScore": 116,
+      "status": "Final",
+      "isLive": false,
+      "isFinal": true
+    }
+  ],
+  "f1": {
+    "drivers": [
+      {
+        "pos": 1,
+        "abbrev": "ANT",
+        "team": "Mercedes",
+        "teamColor": "#00D7B6",
+        "lastLap": "1:33.092",
+        "gap": "LEADER"
+      },
+      {
+        "pos": 2,
+        "abbrev": "NOR",
+        "team": "McLaren",
+        "teamColor": "#F47600",
+        "lastLap": "1:33.474",
+        "gap": "+0.382s"
+      },
+      {
+        "pos": 3,
+        "abbrev": "PIA",
+        "team": "McLaren",
+        "teamColor": "#F47600",
+        "lastLap": "1:33.237",
+        "gap": "+0.145s"
+      },
+      {
+        "pos": 4,
+        "abbrev": "RUS",
+        "team": "Mercedes",
+        "teamColor": "#00D7B6",
+        "lastLap": "1:34.542",
+        "gap": "+1.450s"
+      },
+      {
+        "pos": 5,
+        "abbrev": "VER",
+        "team": "Red Bull Racing",
+        "teamColor": "#4781D7",
+        "lastLap": "1:34.614",
+        "gap": "+1.522s"
+      },
+      {
+        "pos": 6,
+        "abbrev": "LEC",
+        "team": "Ferrari",
+        "teamColor": "#ED1131",
+        "lastLap": "1:49.834",
+        "gap": "+16.742s"
+      },
+      {
+        "pos": 7,
+        "abbrev": "HAM",
+        "team": "Ferrari",
+        "teamColor": "#ED1131",
+        "lastLap": "1:34.950",
+        "gap": "+1.858s"
+      },
+      {
+        "pos": 8,
+        "abbrev": "COL",
+        "team": "Alpine",
+        "teamColor": "#00A1E8",
+        "lastLap": "1:33.148",
+        "gap": "+0.056s"
+      }
+    ],
+    "circuit": "Miami",
+    "sessionName": "Race",
+    "isLive": false
+  }
+}
