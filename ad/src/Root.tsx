@@ -24,6 +24,11 @@ import {
   CS_FPS, CS_H_WIDTH, CS_H_HEIGHT, CS_H_DURATION,
   CS_V_WIDTH, CS_V_HEIGHT, CS_V_DURATION,
 } from "./CSAd";
+import {
+  SDAdHorizontal, SDAdVertical,
+  SD_FPS, SD_H_WIDTH, SD_H_HEIGHT, SD_H_DURATION,
+  SD_V_WIDTH, SD_V_HEIGHT, SD_V_DURATION,
+} from "./SDAd";
 
 export const Root: React.FC = () => (
   <>
@@ -115,6 +120,24 @@ export const Root: React.FC = () => (
       fps={CS_FPS}
       width={CS_V_WIDTH}
       height={CS_V_HEIGHT}
+    />
+
+    {/* StudyDeck — Quizlet alternative */}
+    <Composition
+      id="SDAdHorizontal"
+      component={SDAdHorizontal}
+      durationInFrames={SD_H_DURATION}
+      fps={SD_FPS}
+      width={SD_H_WIDTH}
+      height={SD_H_HEIGHT}
+    />
+    <Composition
+      id="SDAdVertical"
+      component={SDAdVertical}
+      durationInFrames={SD_V_DURATION}
+      fps={SD_FPS}
+      width={SD_V_WIDTH}
+      height={SD_V_HEIGHT}
     />
   </>
 );
