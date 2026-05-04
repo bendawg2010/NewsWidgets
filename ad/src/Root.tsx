@@ -34,6 +34,11 @@ import {
   QI_FPS, QI_H_WIDTH, QI_H_HEIGHT, QI_H_DURATION,
   QI_V_WIDTH, QI_V_HEIGHT, QI_V_DURATION,
 } from "./QuizletImportAd";
+import {
+  QuizletNoAdsAdHorizontal, QuizletNoAdsAdVertical,
+  QNA_FPS, QNA_H_WIDTH, QNA_H_HEIGHT, QNA_H_DURATION,
+  QNA_V_WIDTH, QNA_V_HEIGHT, QNA_V_DURATION,
+} from "./QuizletNoAdsAd";
 
 export const Root: React.FC = () => (
   <>
@@ -161,6 +166,24 @@ export const Root: React.FC = () => (
       fps={QI_FPS}
       width={QI_V_WIDTH}
       height={QI_V_HEIGHT}
+    />
+
+    {/* StudyDeck — Quizlet without ads */}
+    <Composition
+      id="QuizletNoAdsAdHorizontal"
+      component={QuizletNoAdsAdHorizontal}
+      durationInFrames={QNA_H_DURATION}
+      fps={QNA_FPS}
+      width={QNA_H_WIDTH}
+      height={QNA_H_HEIGHT}
+    />
+    <Composition
+      id="QuizletNoAdsAdVertical"
+      component={QuizletNoAdsAdVertical}
+      durationInFrames={QNA_V_DURATION}
+      fps={QNA_FPS}
+      width={QNA_V_WIDTH}
+      height={QNA_V_HEIGHT}
     />
   </>
 );
