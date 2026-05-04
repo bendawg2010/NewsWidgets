@@ -29,6 +29,11 @@ import {
   SD_FPS, SD_H_WIDTH, SD_H_HEIGHT, SD_H_DURATION,
   SD_V_WIDTH, SD_V_HEIGHT, SD_V_DURATION,
 } from "./SDAd";
+import {
+  QuizletImportAdHorizontal, QuizletImportAdVertical,
+  QI_FPS, QI_H_WIDTH, QI_H_HEIGHT, QI_H_DURATION,
+  QI_V_WIDTH, QI_V_HEIGHT, QI_V_DURATION,
+} from "./QuizletImportAd";
 
 export const Root: React.FC = () => (
   <>
@@ -138,6 +143,24 @@ export const Root: React.FC = () => (
       fps={SD_FPS}
       width={SD_V_WIDTH}
       height={SD_V_HEIGHT}
+    />
+
+    {/* StudyDeck — Quizlet importer focus */}
+    <Composition
+      id="QuizletImportAdHorizontal"
+      component={QuizletImportAdHorizontal}
+      durationInFrames={QI_H_DURATION}
+      fps={QI_FPS}
+      width={QI_H_WIDTH}
+      height={QI_H_HEIGHT}
+    />
+    <Composition
+      id="QuizletImportAdVertical"
+      component={QuizletImportAdVertical}
+      durationInFrames={QI_V_DURATION}
+      fps={QI_FPS}
+      width={QI_V_WIDTH}
+      height={QI_V_HEIGHT}
     />
   </>
 );
