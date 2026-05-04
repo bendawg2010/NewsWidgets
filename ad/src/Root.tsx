@@ -19,6 +19,11 @@ import {
   SN_FPS, SN_H_WIDTH, SN_H_HEIGHT, SN_H_DURATION,
   SN_V_WIDTH, SN_V_HEIGHT, SN_V_DURATION,
 } from "./SportsNewsAd";
+import {
+  CSAdHorizontal, CSAdVertical,
+  CS_FPS, CS_H_WIDTH, CS_H_HEIGHT, CS_H_DURATION,
+  CS_V_WIDTH, CS_V_HEIGHT, CS_V_DURATION,
+} from "./CSAd";
 
 export const Root: React.FC = () => (
   <>
@@ -92,6 +97,24 @@ export const Root: React.FC = () => (
       fps={SN_FPS}
       width={SN_V_WIDTH}
       height={SN_V_HEIGHT}
+    />
+
+    {/* Class Schedule */}
+    <Composition
+      id="CSAdHorizontal"
+      component={CSAdHorizontal}
+      durationInFrames={CS_H_DURATION}
+      fps={CS_FPS}
+      width={CS_H_WIDTH}
+      height={CS_H_HEIGHT}
+    />
+    <Composition
+      id="CSAdVertical"
+      component={CSAdVertical}
+      durationInFrames={CS_V_DURATION}
+      fps={CS_FPS}
+      width={CS_V_WIDTH}
+      height={CS_V_HEIGHT}
     />
   </>
 );
