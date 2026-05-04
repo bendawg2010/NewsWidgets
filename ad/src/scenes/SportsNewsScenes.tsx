@@ -55,7 +55,7 @@ export const SNHookScene: React.FC<{ vertical?: boolean }> = ({ vertical = false
           opacity: t1, fontSize, fontWeight: 800, letterSpacing: -3,
           lineHeight: 1, textAlign: "center",
         }}>
-          The locker room.
+          Your sports.
         </div>
         <div style={{
           marginTop: vertical ? 24 : 18,
@@ -65,7 +65,7 @@ export const SNHookScene: React.FC<{ vertical?: boolean }> = ({ vertical = false
           background: SN_GRADIENT,
           backgroundClip: "text", WebkitBackgroundClip: "text", color: "transparent",
         }}>
-          On your desktop.
+          Your picks.
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
@@ -192,13 +192,13 @@ export const SNRevealScene: React.FC<{ vertical?: boolean }> = ({ vertical = fal
         zIndex: 60,
       }}>
         <div style={{ fontSize: vertical ? 60 : 48, fontWeight: 700, letterSpacing: -1.5 }}>
-          ESPN · Fox Sports · BBC · CBS
+          ESPN · Fox · BBC · CBS
         </div>
         <div style={{
           marginTop: 6, fontSize: vertical ? 28 : 22,
           color: COLORS.textSecondary, fontWeight: 500,
         }}>
-          One feed, every locker room.
+          The sports you actually watch.
         </div>
       </div>
     </AbsoluteFill>

@@ -9,6 +9,7 @@ import { slide } from "@remotion/transitions/slide";
 import {
   SNHookScene, SNRevealScene, SNFeaturesScene, SN_FEATURES_TOTAL, SNOutroScene,
 } from "./scenes/SportsNewsScenes";
+import { SportPickerScene } from "./scenes/SportPickerScene";
 import { Watermark } from "./components/Watermark";
 
 export const SN_FPS = 30;
@@ -22,14 +23,16 @@ export const SN_H_WIDTH = 1920;
 export const SN_H_HEIGHT = 1080;
 
 const H_HOOK = 2.6 * SN_FPS;
-const H_REVEAL = 4.0 * SN_FPS;
+const H_REVEAL = 3.5 * SN_FPS;
+const H_PICKER = 4.5 * SN_FPS;          // new — sport picker
 const H_FEATURES = SN_FEATURES_TOTAL;
 const H_OUTRO = 3.0 * SN_FPS;
 const FADE = 18;
 const SLIDE_T = 14;
 
+// 4 transitions: 1 fade + 1 slide + 1 fade + 1 fade
 export const SN_H_DURATION =
-  H_HOOK + H_REVEAL + H_FEATURES + H_OUTRO - FADE * 2 - SLIDE_T;
+  H_HOOK + H_REVEAL + H_PICKER + H_FEATURES + H_OUTRO - FADE * 3 - SLIDE_T;
 
 export const SportsNewsAdHorizontal: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
@@ -51,6 +54,11 @@ export const SportsNewsAdHorizontal: React.FC = () => (
         timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE_T })}
       />
 
+      <TransitionSeries.Sequence durationInFrames={H_PICKER}>
+        <SportPickerScene />
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: FADE })} />
+
       <TransitionSeries.Sequence durationInFrames={H_FEATURES}>
         <SNFeaturesScene />
       </TransitionSeries.Sequence>
@@ -70,12 +78,13 @@ export const SN_V_WIDTH = 1080;
 export const SN_V_HEIGHT = 1920;
 
 const V_HOOK = 2.6 * SN_FPS;
-const V_REVEAL = 4.0 * SN_FPS;
+const V_REVEAL = 3.5 * SN_FPS;
+const V_PICKER = 4.5 * SN_FPS;
 const V_FEATURES = SN_FEATURES_TOTAL;
 const V_OUTRO = 3.0 * SN_FPS;
 
 export const SN_V_DURATION =
-  V_HOOK + V_REVEAL + V_FEATURES + V_OUTRO - FADE * 2 - SLIDE_T;
+  V_HOOK + V_REVEAL + V_PICKER + V_FEATURES + V_OUTRO - FADE * 3 - SLIDE_T;
 
 export const SportsNewsAdVertical: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
@@ -96,6 +105,11 @@ export const SportsNewsAdVertical: React.FC = () => (
         presentation={slide({ direction: "from-bottom" })}
         timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE_T })}
       />
+
+      <TransitionSeries.Sequence durationInFrames={V_PICKER}>
+        <SportPickerScene vertical />
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: FADE })} />
 
       <TransitionSeries.Sequence durationInFrames={V_FEATURES}>
         <SNFeaturesScene />
