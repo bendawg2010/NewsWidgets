@@ -1,22 +1,22 @@
 import React from "react";
 import {
-  AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig, Sequence,
+  AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig,
 } from "remotion";
 import { COLORS, FONT_STACK } from "../tokens";
 
 // ----- Brand tokens -----------------------------------------------------
 
-const SD_ORANGE = "#FFB454";
-const SD_PINK   = "#FF6B6B";
-const SD_PURPLE = "#C147FF";
-const SD_GREEN  = "#34C759";
+const DG_ORANGE = "#FFB454";
+const DG_PINK   = "#FF6B6B";
+const DG_PURPLE = "#C147FF";
+const DG_GREEN  = "#34C759";
 const QUIZLET_BLUE  = "#4257B2";
 const QUIZLET_DARK  = "#2C3899";
-const SD_GRADIENT = `linear-gradient(135deg, ${SD_ORANGE} 0%, ${SD_PINK} 50%, ${SD_PURPLE} 100%)`;
+const DG_GRADIENT = `linear-gradient(135deg, ${DG_ORANGE} 0%, ${DG_PINK} 50%, ${DG_PURPLE} 100%)`;
 
 // ----- Wallpaper --------------------------------------------------------
 
-const QNAWallpaper: React.FC = () => (
+const DGWallpaper: React.FC = () => (
   <AbsoluteFill>
     <AbsoluteFill style={{
       background:
@@ -31,7 +31,7 @@ const QNAWallpaper: React.FC = () => (
   </AbsoluteFill>
 );
 
-// ----- Reusable: browser frame -----------------------------------------
+// ----- Browser frame ---------------------------------------------------
 
 const BrowserFrame: React.FC<{
   url: string;
@@ -50,7 +50,6 @@ const BrowserFrame: React.FC<{
     position: "relative",
     fontFamily: FONT_STACK,
   }}>
-    {/* Title bar */}
     <div style={{
       height: 36, background: "#2a2a2c",
       display: "flex", alignItems: "center", padding: "0 14px",
@@ -64,12 +63,8 @@ const BrowserFrame: React.FC<{
         background: "#3a3a3c", color: "#bbb",
         fontSize: 13, fontFamily: 'ui-monospace, "SF Mono", Menlo, monospace',
         display: "flex", alignItems: "center", padding: "0 10px",
-      }}>
-        {url}
-      </div>
+      }}>{url}</div>
     </div>
-
-    {/* Bookmarks bar */}
     <div style={{
       height: 32, background: "#242426",
       borderBottom: "1px solid #00000033",
@@ -86,7 +81,7 @@ const BrowserFrame: React.FC<{
       {showBookmark && (
         <div style={{
           padding: "3px 10px", borderRadius: 6,
-          background: SD_GRADIENT,
+          background: DG_GRADIENT,
           fontSize: 11, fontWeight: 700, color: "white",
           letterSpacing: -0.2, whiteSpace: "nowrap",
           transform: `scale(${bookmarkPulse})`,
@@ -94,12 +89,10 @@ const BrowserFrame: React.FC<{
             ? "0 0 0 4px rgba(193, 71, 255, 0.35), 0 0 24px rgba(255, 107, 107, 0.45)"
             : "none",
         }}>
-          ⭐ Send to StudyDeck
+          ⭐ Grab cards
         </div>
       )}
     </div>
-
-    {/* Page area */}
     <div style={{
       position: "absolute", top: 68, left: 0, right: 0, bottom: 0,
       overflow: "hidden",
@@ -118,27 +111,21 @@ const Cursor: React.FC<{ x: number; y: number }> = ({ x, y }) => (
       filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.55))",
     }}
   >
-    <path
-      d="M2 2 L20 12 L12 13 L9 22 Z"
-      fill="white" stroke="#000" strokeWidth="1.5"
-    />
+    <path d="M2 2 L20 12 L12 13 L9 22 Z" fill="white" stroke="#000" strokeWidth="1.5" />
   </svg>
 );
 
 // ----- Scene 1: Quizlet drowned in ads ---------------------------------
 
-export const QNAAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
+export const DGAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   const headerSp = spring({ frame, fps, config: { damping: 18 } });
-
-  // First ad slides up at t=0.6s, second ad pops in at t=1.6s, third at t=2.4s
   const ad1Sp = spring({ frame: frame - 0.6 * fps, fps, config: { damping: 12, stiffness: 170 } });
-  const ad2Sp = spring({ frame: frame - 1.6 * fps, fps, config: { damping: 12, stiffness: 170 } });
-  const ad3Sp = spring({ frame: frame - 2.4 * fps, fps, config: { damping: 12, stiffness: 170 } });
+  const ad2Sp = spring({ frame: frame - 1.5 * fps, fps, config: { damping: 12, stiffness: 170 } });
+  const ad3Sp = spring({ frame: frame - 2.3 * fps, fps, config: { damping: 12, stiffness: 170 } });
 
-  // Cursor desperately tries to hit an X — wiggles around the screen
   const wiggle = Math.sin(frame / 4) * 12;
   const cursorX = vertical
     ? 540 + Math.sin(frame / 8) * 200
@@ -152,7 +139,7 @@ export const QNAAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <QNAWallpaper />
+      <DGWallpaper />
       <AbsoluteFill style={{
         alignItems: "center", justifyContent: "center",
         fontFamily: FONT_STACK, color: "white", padding: 40,
@@ -160,18 +147,17 @@ export const QNAAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false
         <div style={{
           opacity: headerSp,
           transform: `translateY(${interpolate(headerSp, [0, 1], [-12, 0])}px)`,
-          fontSize: vertical ? 72 : 56, fontWeight: 800, letterSpacing: -2,
-          marginBottom: vertical ? 40 : 28,
+          fontSize: vertical ? 80 : 60, fontWeight: 800, letterSpacing: -2,
+          marginBottom: vertical ? 36 : 26,
           textAlign: "center",
         }}>
-          Quizlet today.
+          Stuck in Quizlet?
         </div>
 
         <BrowserFrame
           url="quizlet.com/501234567/biology-101"
           width={pageWidth} height={pageHeight}
         >
-          {/* Quizlet content background */}
           <div style={{
             position: "absolute", inset: 0,
             background: `linear-gradient(180deg, ${QUIZLET_BLUE} 0%, ${QUIZLET_DARK} 100%)`,
@@ -263,7 +249,7 @@ export const QNAAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false
                 CLICK NOW!!! WIN $1000
               </div>
               <div style={{ fontSize: 13, opacity: 0.85, fontFamily: FONT_STACK, fontWeight: 600 }}>
-                Limited time offer — last chance!
+                Limited time — last chance!
               </div>
             </div>
 
@@ -287,7 +273,6 @@ export const QNAAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false
               }}>GET IT</span>
             </div>
 
-            {/* Cursor wandering */}
             <Cursor x={cursorX} y={cursorY} />
           </div>
         </BrowserFrame>
@@ -296,9 +281,9 @@ export const QNAAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false
   );
 };
 
-// ----- Scene 2: Drop bookmark ------------------------------------------
+// ----- Scene 2: Drop bookmarklet ---------------------------------------
 
-export const QNADropScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
+export const DGDropScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -325,7 +310,7 @@ export const QNADropScene: React.FC<{ vertical?: boolean }> = ({ vertical = fals
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <QNAWallpaper />
+      <DGWallpaper />
       <AbsoluteFill style={{
         alignItems: "center", justifyContent: "center",
         fontFamily: FONT_STACK, color: "white", padding: 40,
@@ -336,7 +321,7 @@ export const QNADropScene: React.FC<{ vertical?: boolean }> = ({ vertical = fals
           fontSize: vertical ? 64 : 50, fontWeight: 800, letterSpacing: -1.8,
           marginBottom: vertical ? 36 : 26, textAlign: "center",
         }}>
-          Drop our bookmark.
+          1. Drop the bookmark.
         </div>
 
         <div style={{
@@ -345,7 +330,7 @@ export const QNADropScene: React.FC<{ vertical?: boolean }> = ({ vertical = fals
           position: "relative",
         }}>
           <BrowserFrame
-            url="studydeck.pages.dev"
+            url="deckgrab.pages.dev"
             width={pageWidth} height={pageHeight}
             showBookmark={landedSp > 0.05}
             bookmarkPulse={interpolate(landedSp, [0, 1], [0.6, 1])}
@@ -358,33 +343,35 @@ export const QNADropScene: React.FC<{ vertical?: boolean }> = ({ vertical = fals
               padding: vertical ? 40 : 60,
               display: "flex", flexDirection: "column",
               alignItems: "center", justifyContent: "flex-start",
-              gap: vertical ? 28 : 24,
+              gap: vertical ? 28 : 22,
               fontFamily: FONT_STACK, color: "white",
             }}>
               <div style={{
-                fontSize: vertical ? 32 : 28, fontWeight: 800, marginTop: 8,
-                letterSpacing: -0.5,
+                fontSize: vertical ? 36 : 32, fontWeight: 800, marginTop: 8,
+                letterSpacing: -1,
+                background: DG_GRADIENT,
+                backgroundClip: "text", WebkitBackgroundClip: "text", color: "transparent",
               }}>
-                Import from Quizlet
+                DeckGrab
               </div>
               <div style={{
-                fontSize: vertical ? 18 : 16, color: "rgba(255,255,255,0.70)",
-                fontWeight: 500, textAlign: "center", maxWidth: 600,
+                fontSize: vertical ? 22 : 18, color: "rgba(255,255,255,0.85)",
+                fontWeight: 600, textAlign: "center", maxWidth: 600, letterSpacing: -0.3,
               }}>
-                Drag this button to your bookmarks bar.
+                Yank any Quizlet set into plain text.
               </div>
               <div style={{
-                marginTop: vertical ? 28 : 20,
+                marginTop: vertical ? 24 : 16,
                 padding: vertical ? "26px 56px" : "22px 44px",
                 borderRadius: 16,
-                background: SD_GRADIENT,
+                background: DG_GRADIENT,
                 fontSize: vertical ? 38 : 30,
                 fontWeight: 800, color: "white", letterSpacing: -0.5,
                 boxShadow: "0 16px 48px rgba(193, 71, 255, 0.45)",
                 opacity: dragP < 0.05 ? 1 : 0.35,
                 transform: dragP < 0.05 ? "scale(1)" : "scale(0.96)",
               }}>
-                ⭐ Send to StudyDeck
+                ⭐ Grab cards
               </div>
             </div>
 
@@ -396,7 +383,7 @@ export const QNADropScene: React.FC<{ vertical?: boolean }> = ({ vertical = fals
                 transform: "translate(-50%, -50%)",
                 padding: "10px 18px",
                 borderRadius: 10,
-                background: SD_GRADIENT,
+                background: DG_GRADIENT,
                 fontSize: vertical ? 18 : 14,
                 fontWeight: 800, color: "white",
                 opacity: 0.92,
@@ -404,7 +391,7 @@ export const QNADropScene: React.FC<{ vertical?: boolean }> = ({ vertical = fals
                 pointerEvents: "none",
                 whiteSpace: "nowrap",
               }}>
-                ⭐ Send to StudyDeck
+                ⭐ Grab cards
               </div>
             )}
             {dragP > 0.02 && (
@@ -417,9 +404,9 @@ export const QNADropScene: React.FC<{ vertical?: boolean }> = ({ vertical = fals
   );
 };
 
-// ----- Scene 3: Import from Quizlet ------------------------------------
+// ----- Scene 3: Click on Quizlet ---------------------------------------
 
-export const QNAImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
+export const DGImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -433,7 +420,7 @@ export const QNAImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
   );
 
   const rampStart = clickFrame + 8;
-  const rampEnd   = clickFrame + 2.6 * fps;
+  const rampEnd   = clickFrame + 2.4 * fps;
   const ramp = interpolate(frame, [rampStart, rampEnd], [0, 1], {
     extrapolateLeft: "clamp", extrapolateRight: "clamp",
   });
@@ -447,7 +434,6 @@ export const QNAImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
   const pageWidth = vertical ? 920 : 1300;
   const pageHeight = vertical ? 1280 : 760;
 
-  // Cursor: from middle to bookmarks bar pill
   const cursorStartX = vertical ? 460 : 600;
   const cursorStartY = vertical ? 220 : 180;
   const cursorEndX = 280;
@@ -465,7 +451,7 @@ export const QNAImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <QNAWallpaper />
+      <DGWallpaper />
       <AbsoluteFill style={{
         alignItems: "center", justifyContent: "center",
         fontFamily: FONT_STACK, color: "white", padding: 40,
@@ -476,7 +462,7 @@ export const QNAImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
           fontSize: vertical ? 64 : 50, fontWeight: 800, letterSpacing: -1.8,
           marginBottom: vertical ? 36 : 26, textAlign: "center",
         }}>
-          Click on any Quizlet set.
+          2. Click on any set.
         </div>
 
         <div style={{
@@ -528,7 +514,6 @@ export const QNAImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
                 </div>
               ))}
 
-              {/* StudyDeck floating progress badge */}
               {frame >= clickFrame - 2 && (
                 <div style={{
                   position: "absolute",
@@ -536,7 +521,7 @@ export const QNAImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
                   right: vertical ? 22 : 18,
                   padding: "14px 20px",
                   borderRadius: 12,
-                  background: SD_GRADIENT,
+                  background: DG_GRADIENT,
                   color: "white",
                   fontFamily: FONT_STACK,
                   fontWeight: 700,
@@ -546,8 +531,8 @@ export const QNAImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
                   transform: `scale(${interpolate(frame, [clickFrame - 2, clickFrame], [0.6, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })})`,
                 }}>
                   {doneSp > 0.4
-                    ? `StudyDeck: got ${counter} cards! Opening…`
-                    : `StudyDeck: scanning page… ${counter}`}
+                    ? `DeckGrab: got ${counter} cards! Opening…`
+                    : `DeckGrab: scanning page… ${counter}`}
                 </div>
               )}
             </div>
@@ -560,88 +545,139 @@ export const QNAImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
   );
 };
 
-// ----- Scene 4: All study modes ----------------------------------------
+// ----- Scene 4: Export options ----------------------------------------
 
-const MODES = [
-  { name: "Flashcards.",     sub: "Flip, swipe, master." },
-  { name: "Match.",          sub: "Pair terms, beat the clock." },
-  { name: "Falling Blocks.", sub: "Type before they hit the floor." },
-  { name: "Block Blast.",    sub: "Clear lines, quiz on every blast." },
-  { name: "Test.",           sub: "MC, T/F, written — auto-graded." },
+const EXPORT_OPTIONS = [
+  { label: "TSV",   sub: "Spreadsheets, Quizlet re-import" },
+  { label: "CSV",   sub: "Universal flashcard format" },
+  { label: "JSON",  sub: "For developers" },
+  { label: "Anki",  sub: "Drop into your Anki deck" },
+  { label: "StudyDeck", sub: "Free Quizlet alternative" },
 ];
-const SLIDE = 24; // 0.8s per mode @ 30fps
-export const QNA_MODES_DURATION = MODES.length * SLIDE + 12;
 
-export const QNAModesScene: React.FC = () => (
-  <AbsoluteFill style={{ background: "#000" }}>
-    <QNAWallpaper />
-    {MODES.map((m, i) => (
-      <Sequence
-        key={i}
-        from={i * SLIDE}
-        durationInFrames={SLIDE + 6}
-        premountFor={20}
-      >
-        <ModeSlide mode={m} />
-      </Sequence>
-    ))}
-  </AbsoluteFill>
-);
-
-const ModeSlide: React.FC<{ mode: { name: string; sub: string } }> = ({ mode }) => {
+export const DGExportScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const enter = spring({ frame, fps, config: { damping: 16, stiffness: 130 } });
-  const exit  = spring({ frame: frame - (SLIDE - 8), fps, config: { damping: 200 } });
-  const opacity = enter - exit;
-  const y = interpolate(enter - exit, [0, 1], [40, 0]);
+
+  const headerSp = spring({ frame, fps, config: { damping: 18 } });
 
   return (
-    <AbsoluteFill style={{
-      alignItems: "center", justifyContent: "center",
-      fontFamily: FONT_STACK, opacity, transform: `translateY(${y}px)`,
-      padding: 40,
-    }}>
-      <div style={{
-        fontSize: 156, fontWeight: 800, letterSpacing: -4,
-        background: SD_GRADIENT,
-        backgroundClip: "text", WebkitBackgroundClip: "text", color: "transparent",
-        lineHeight: 1.05, textAlign: "center",
+    <AbsoluteFill style={{ background: "#000" }}>
+      <DGWallpaper />
+      <AbsoluteFill style={{
+        alignItems: "center", justifyContent: "center",
+        fontFamily: FONT_STACK, color: "white", padding: 40,
       }}>
-        {mode.name}
-      </div>
-      <div style={{
-        marginTop: 22, fontSize: 32, fontWeight: 500,
-        color: COLORS.textSecondary, letterSpacing: -0.4, textAlign: "center",
-      }}>
-        {mode.sub}
-      </div>
+        <div style={{
+          opacity: headerSp,
+          transform: `translateY(${interpolate(headerSp, [0, 1], [-12, 0])}px)`,
+          fontSize: vertical ? 64 : 50, fontWeight: 800, letterSpacing: -1.8,
+          marginBottom: vertical ? 14 : 12, textAlign: "center",
+        }}>
+          3. Take it <span style={{
+            background: DG_GRADIENT,
+            backgroundClip: "text", WebkitBackgroundClip: "text", color: "transparent",
+          }}>anywhere.</span>
+        </div>
+        <div style={{
+          opacity: headerSp,
+          fontSize: vertical ? 24 : 20,
+          color: COLORS.textSecondary, fontWeight: 500, letterSpacing: -0.3,
+          marginBottom: vertical ? 36 : 28, textAlign: "center",
+        }}>
+          Your cards. Your call.
+        </div>
+
+        <div style={{
+          width: vertical ? 880 : 1100,
+          background: "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
+          border: "1px solid rgba(255,255,255,0.10)",
+          borderRadius: 24,
+          padding: vertical ? 28 : 36,
+          backdropFilter: "blur(40px) saturate(180%)",
+          boxShadow: "0 24px 60px rgba(0,0,0,0.55)",
+          opacity: headerSp,
+          transform: `translateY(${interpolate(headerSp, [0, 1], [40, 0])}px)`,
+        }}>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+            marginBottom: vertical ? 22 : 18,
+          }}>
+            <div style={{
+              fontSize: vertical ? 26 : 22, fontWeight: 800, letterSpacing: -0.5,
+            }}>
+              Your cards are yoinked.
+            </div>
+            <div style={{
+              padding: "6px 14px", borderRadius: 999,
+              background: "rgba(52, 199, 89, 0.18)",
+              border: "1px solid rgba(52, 199, 89, 0.35)",
+              fontSize: vertical ? 16 : 14, fontWeight: 700, color: DG_GREEN,
+            }}>
+              184 cards
+            </div>
+          </div>
+
+          {/* Export buttons grid */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: vertical ? "1fr 1fr" : "repeat(5, 1fr)",
+            gap: vertical ? 14 : 12,
+          }}>
+            {EXPORT_OPTIONS.map((opt, i) => {
+              const sp = spring({
+                frame: frame - (0.5 + i * 0.10) * fps, fps,
+                config: { damping: 16, stiffness: 120 },
+              });
+              const isPrimary = i === 0;
+              return (
+                <div key={opt.label} style={{
+                  opacity: sp,
+                  transform: `translateY(${interpolate(sp, [0, 1], [16, 0])}px) scale(${interpolate(sp, [0, 1], [0.94, 1])})`,
+                  background: isPrimary ? DG_GRADIENT : "rgba(255,255,255,0.04)",
+                  border: isPrimary ? "none" : "1px solid rgba(255,255,255,0.10)",
+                  borderRadius: 14,
+                  padding: vertical ? "18px 20px" : "20px 22px",
+                  textAlign: "center",
+                  boxShadow: isPrimary ? "0 12px 32px rgba(193, 71, 255, 0.35)" : "none",
+                }}>
+                  <div style={{
+                    fontSize: vertical ? 22 : 22, fontWeight: 800, letterSpacing: -0.4,
+                    marginBottom: 4,
+                  }}>
+                    {opt.label}
+                  </div>
+                  <div style={{
+                    fontSize: vertical ? 13 : 12,
+                    color: isPrimary ? "rgba(255,255,255,0.85)" : COLORS.textSecondary,
+                    fontWeight: 600, letterSpacing: -0.1,
+                  }}>
+                    {opt.sub}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
 
-// ----- Scene 5: WITHOUT ADS finale + URL -------------------------------
+// ----- Scene 5: Outro ---------------------------------------------------
 
-export const QNAFinaleScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
+export const DGOutroScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // "WITHOUT" scales in
   const word1Sp = spring({ frame, fps, config: { damping: 14, stiffness: 130 } });
-  // "ADS." crashes in slightly later
   const word2Sp = spring({ frame: frame - 0.35 * fps, fps, config: { damping: 12, stiffness: 220 } });
-  // Strikethrough sweeps across "ADS." after it lands
-  const strikeSp = spring({ frame: frame - 1.0 * fps, fps, config: { damping: 200, stiffness: 110 }, durationInFrames: 0.6 * fps });
-  // CTA pill
-  const ctaSp = spring({ frame: frame - 1.6 * fps, fps, config: { damping: 20 } });
-  const urlSp = spring({ frame: frame - 1.9 * fps, fps, config: { damping: 22 } });
-
-  const word2X = interpolate(word2Sp, [0, 1], [vertical ? 180 : 220, 0]);
-  const word2Rot = interpolate(word2Sp, [0, 1], [-8, 0]);
+  const ctaSp = spring({ frame: frame - 1.0 * fps, fps, config: { damping: 20 } });
+  const urlSp = spring({ frame: frame - 1.3 * fps, fps, config: { damping: 22 } });
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <QNAWallpaper />
+      <DGWallpaper />
       <AbsoluteFill style={{
         alignItems: "center", justifyContent: "center",
         fontFamily: FONT_STACK, color: "white", padding: 40,
@@ -652,47 +688,31 @@ export const QNAFinaleScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
           transform: `translateY(${interpolate(word1Sp, [0, 1], [40, 0])}px)`,
           textAlign: "center", lineHeight: 1,
         }}>
-          Without
+          DeckGrab.
         </div>
         <div style={{
-          position: "relative",
           marginTop: vertical ? 12 : 6,
-          fontSize: vertical ? 220 : 180, fontWeight: 800, letterSpacing: -6,
+          fontSize: vertical ? 200 : 160, fontWeight: 800, letterSpacing: -5,
           opacity: word2Sp,
-          transform: `translateX(${word2X}px) rotate(${word2Rot}deg)`,
-          background: SD_GRADIENT,
+          transform: `translateY(${interpolate(word2Sp, [0, 1], [40, 0])}px)`,
+          background: DG_GRADIENT,
           backgroundClip: "text", WebkitBackgroundClip: "text", color: "transparent",
           textAlign: "center", lineHeight: 1,
-          paddingLeft: vertical ? 40 : 60,
-          paddingRight: vertical ? 40 : 60,
         }}>
-          ADS.
-          {/* Diagonal strike that sweeps across */}
-          <div style={{
-            position: "absolute",
-            left: vertical ? 20 : 30,
-            right: vertical ? 20 : 30,
-            top: "55%",
-            height: vertical ? 14 : 12,
-            background: SD_PINK,
-            transform: `scaleX(${strikeSp}) rotate(-6deg)`,
-            transformOrigin: "left center",
-            borderRadius: 6,
-            boxShadow: "0 6px 20px rgba(255,107,107,0.55)",
-          }} />
+          Free.
         </div>
         <div style={{
           marginTop: vertical ? 60 : 44,
           padding: vertical ? "18px 40px" : "16px 32px",
           borderRadius: 999,
-          background: SD_GRADIENT,
+          background: DG_GRADIENT,
           boxShadow: `0 12px 48px rgba(193, 71, 255, 0.45)`,
           opacity: ctaSp,
           transform: `translateY(${interpolate(ctaSp, [0, 1], [12, 0])}px)`,
           fontSize: vertical ? 32 : 26,
           fontWeight: 700, letterSpacing: -0.5,
         }}>
-          studydeck.pages.dev
+          deckgrab.pages.dev
         </div>
         <div style={{
           marginTop: vertical ? 16 : 12,
@@ -704,7 +724,7 @@ export const QNAFinaleScene: React.FC<{ vertical?: boolean }> = ({ vertical = fa
           fontFamily: 'ui-monospace, "SF Mono", Menlo, monospace',
           letterSpacing: -0.2,
         }}>
-          ★ github.com/bendawg2010/StudyDeck · free forever
+          ★ github.com/bendawg2010/DeckGrab · open source
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

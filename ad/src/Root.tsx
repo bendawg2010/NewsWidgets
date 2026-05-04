@@ -30,15 +30,10 @@ import {
   SD_V_WIDTH, SD_V_HEIGHT, SD_V_DURATION,
 } from "./SDAd";
 import {
-  QuizletImportAdHorizontal, QuizletImportAdVertical,
-  QI_FPS, QI_H_WIDTH, QI_H_HEIGHT, QI_H_DURATION,
-  QI_V_WIDTH, QI_V_HEIGHT, QI_V_DURATION,
-} from "./QuizletImportAd";
-import {
-  QuizletNoAdsAdHorizontal, QuizletNoAdsAdVertical,
-  QNA_FPS, QNA_H_WIDTH, QNA_H_HEIGHT, QNA_H_DURATION,
-  QNA_V_WIDTH, QNA_V_HEIGHT, QNA_V_DURATION,
-} from "./QuizletNoAdsAd";
+  DeckGrabAdHorizontal, DeckGrabAdVertical,
+  DG_FPS, DG_H_WIDTH, DG_H_HEIGHT, DG_H_DURATION,
+  DG_V_WIDTH, DG_V_HEIGHT, DG_V_DURATION,
+} from "./DeckGrabAd";
 
 export const Root: React.FC = () => (
   <>
@@ -150,40 +145,22 @@ export const Root: React.FC = () => (
       height={SD_V_HEIGHT}
     />
 
-    {/* StudyDeck — Quizlet importer focus */}
+    {/* DeckGrab — Quizlet bookmarklet exporter */}
     <Composition
-      id="QuizletImportAdHorizontal"
-      component={QuizletImportAdHorizontal}
-      durationInFrames={QI_H_DURATION}
-      fps={QI_FPS}
-      width={QI_H_WIDTH}
-      height={QI_H_HEIGHT}
+      id="DeckGrabAdHorizontal"
+      component={DeckGrabAdHorizontal}
+      durationInFrames={DG_H_DURATION}
+      fps={DG_FPS}
+      width={DG_H_WIDTH}
+      height={DG_H_HEIGHT}
     />
     <Composition
-      id="QuizletImportAdVertical"
-      component={QuizletImportAdVertical}
-      durationInFrames={QI_V_DURATION}
-      fps={QI_FPS}
-      width={QI_V_WIDTH}
-      height={QI_V_HEIGHT}
-    />
-
-    {/* StudyDeck — Quizlet without ads */}
-    <Composition
-      id="QuizletNoAdsAdHorizontal"
-      component={QuizletNoAdsAdHorizontal}
-      durationInFrames={QNA_H_DURATION}
-      fps={QNA_FPS}
-      width={QNA_H_WIDTH}
-      height={QNA_H_HEIGHT}
-    />
-    <Composition
-      id="QuizletNoAdsAdVertical"
-      component={QuizletNoAdsAdVertical}
-      durationInFrames={QNA_V_DURATION}
-      fps={QNA_FPS}
-      width={QNA_V_WIDTH}
-      height={QNA_V_HEIGHT}
+      id="DeckGrabAdVertical"
+      component={DeckGrabAdVertical}
+      durationInFrames={DG_V_DURATION}
+      fps={DG_FPS}
+      width={DG_V_WIDTH}
+      height={DG_V_HEIGHT}
     />
   </>
 );

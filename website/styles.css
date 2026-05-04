@@ -1610,6 +1610,24 @@ footer {
   --tracker-accent: #FF6B6B;
   --tracker-glow: radial-gradient(80% 60% at 50% 0%, rgba(225,6,0,0.20), transparent 60%);
 }
+.tracker-card.t-classschedule {
+  --tracker-icon: linear-gradient(135deg, #5AC8FA 0%, #007AFF 100%);
+  --tracker-shadow: rgba(0, 122, 255, 0.45);
+  --tracker-accent: #6FB6FF;
+  --tracker-glow: radial-gradient(80% 60% at 50% 0%, rgba(0,122,255,0.18), transparent 60%);
+}
+.tracker-card.t-studydeck {
+  --tracker-icon: linear-gradient(135deg, #FFB454 0%, #FF6B6B 50%, #C147FF 100%);
+  --tracker-shadow: rgba(193, 71, 255, 0.45);
+  --tracker-accent: #FF9DC3;
+  --tracker-glow: radial-gradient(80% 60% at 50% 0%, rgba(193,71,255,0.20), transparent 60%);
+}
+.tracker-card.t-deckgrab {
+  --tracker-icon: linear-gradient(135deg, #FFB454 0%, #FF6B6B 50%, #C147FF 100%);
+  --tracker-shadow: rgba(255, 107, 107, 0.45);
+  --tracker-accent: #FFB454;
+  --tracker-glow: radial-gradient(80% 60% at 50% 0%, rgba(255,107,107,0.20), transparent 60%);
+}
 
 @media (max-width: 900px) {
   .tracker-grid { grid-template-columns: 1fr; }
