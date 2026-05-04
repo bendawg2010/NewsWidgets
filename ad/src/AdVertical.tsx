@@ -38,13 +38,7 @@ export const NewsWidgetsAdVertical: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
     <Audio
       src={staticFile("news.mp3")}
-      volume={(f) => {
-        const fadeInEnd = 0.4 * V_FPS;
-        const fadeOutStart = V_DURATION - 0.8 * V_FPS;
-        if (f < fadeInEnd) return interpolate(f, [0, fadeInEnd], [0, 0.42]);
-        if (f > fadeOutStart) return interpolate(f, [fadeOutStart, V_DURATION], [0.42, 0]);
-        return 0.42;
-      }}
+      volume={0.45}
     />
     <TransitionSeries>
       <TransitionSeries.Sequence durationInFrames={HOOK}>

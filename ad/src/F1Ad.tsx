@@ -42,13 +42,7 @@ export const F1AdHorizontal: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
     <Audio
       src={staticFile(F1_MUSIC)}
-      volume={(f) => {
-        const inEnd = 0.4 * F1_FPS;
-        const outStart = F1_H_DURATION - 0.8 * F1_FPS;
-        if (f < inEnd) return interpolate(f, [0, inEnd], [0, 0.42]);
-        if (f > outStart) return interpolate(f, [outStart, F1_H_DURATION], [0.42, 0]);
-        return 0.42;
-      }}
+      volume={0.45}
     />
     <TransitionSeries>
       <TransitionSeries.Sequence durationInFrames={H_HOOK}>
@@ -108,13 +102,7 @@ export const F1AdVertical: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
     <Audio
       src={staticFile(F1_MUSIC)}
-      volume={(f) => {
-        const inEnd = 0.4 * F1_FPS;
-        const outStart = F1_V_DURATION - 0.8 * F1_FPS;
-        if (f < inEnd) return interpolate(f, [0, inEnd], [0, 0.42]);
-        if (f > outStart) return interpolate(f, [outStart, F1_V_DURATION], [0.42, 0]);
-        return 0.42;
-      }}
+      volume={0.45}
     />
     <TransitionSeries>
       <TransitionSeries.Sequence durationInFrames={V_HOOK}>

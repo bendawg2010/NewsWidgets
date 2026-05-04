@@ -36,13 +36,7 @@ export const SportsAdHorizontal: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
     <Audio
       src={staticFile("sports.mp3")}
-      volume={(f) => {
-        const inEnd = 0.4 * SPORTS_FPS;
-        const outStart = SPORTS_H_DURATION - 0.8 * SPORTS_FPS;
-        if (f < inEnd) return interpolate(f, [0, inEnd], [0, 0.42]);
-        if (f > outStart) return interpolate(f, [outStart, SPORTS_H_DURATION], [0.42, 0]);
-        return 0.42;
-      }}
+      volume={0.45}
     />
     <TransitionSeries>
       <TransitionSeries.Sequence durationInFrames={H_HOOK}>
@@ -88,13 +82,7 @@ export const SportsAdVertical: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
     <Audio
       src={staticFile("sports.mp3")}
-      volume={(f) => {
-        const inEnd = 0.4 * SPORTS_FPS;
-        const outStart = SPORTS_V_DURATION - 0.8 * SPORTS_FPS;
-        if (f < inEnd) return interpolate(f, [0, inEnd], [0, 0.42]);
-        if (f > outStart) return interpolate(f, [outStart, SPORTS_V_DURATION], [0.42, 0]);
-        return 0.42;
-      }}
+      volume={0.45}
     />
     <TransitionSeries>
       <TransitionSeries.Sequence durationInFrames={V_HOOK}>

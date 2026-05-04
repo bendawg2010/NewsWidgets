@@ -50,13 +50,7 @@ export const NewsWidgetsAd: React.FC = () => {
           stays at -8 dB to leave headroom, fades out over the last 0.8s. */}
       <Audio
         src={staticFile("news.mp3")}
-        volume={(f) => {
-          const fadeInEnd = 0.4 * AD_FPS;
-          const fadeOutStart = AD_DURATION - 0.8 * AD_FPS;
-          if (f < fadeInEnd) return interpolate(f, [0, fadeInEnd], [0, 0.42]);
-          if (f > fadeOutStart) return interpolate(f, [fadeOutStart, AD_DURATION], [0.42, 0]);
-          return 0.42;
-        }}
+        volume={0.45}
       />
       <TransitionSeries>
         <TransitionSeries.Sequence durationInFrames={HOOK}>
