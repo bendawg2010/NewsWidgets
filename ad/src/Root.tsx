@@ -39,6 +39,11 @@ import {
   AT_FPS, AT_H_WIDTH, AT_H_HEIGHT, AT_H_DURATION,
   AT_V_WIDTH, AT_V_HEIGHT, AT_V_DURATION,
 } from "./AssignmentTrackerAd";
+import {
+  DueInAdHorizontal, DueInAdVertical,
+  DI_FPS, DI_H_WIDTH, DI_H_HEIGHT, DI_H_DURATION,
+  DI_V_WIDTH, DI_V_HEIGHT, DI_V_DURATION,
+} from "./DueInAd";
 
 export const Root: React.FC = () => (
   <>
@@ -184,6 +189,24 @@ export const Root: React.FC = () => (
       fps={AT_FPS}
       width={AT_V_WIDTH}
       height={AT_V_HEIGHT}
+    />
+
+    {/* DueIn — macOS countdown widget */}
+    <Composition
+      id="DueInAdHorizontal"
+      component={DueInAdHorizontal}
+      durationInFrames={DI_H_DURATION}
+      fps={DI_FPS}
+      width={DI_H_WIDTH}
+      height={DI_H_HEIGHT}
+    />
+    <Composition
+      id="DueInAdVertical"
+      component={DueInAdVertical}
+      durationInFrames={DI_V_DURATION}
+      fps={DI_FPS}
+      width={DI_V_WIDTH}
+      height={DI_V_HEIGHT}
     />
   </>
 );
