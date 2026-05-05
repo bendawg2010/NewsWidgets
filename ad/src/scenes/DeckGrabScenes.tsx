@@ -353,50 +353,100 @@ export const DGAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false 
               fontFamily: FONT_STACK,
               border: "1px solid #333",
             }}>
-              {/* Garish video content */}
+              {/* Starbucks-style ad content */}
               <div style={{
                 position: "absolute", inset: 0,
-                background: `linear-gradient(135deg, hsl(${(frame * 6) % 360}, 95%, 55%), hsl(${(frame * 6 + 60) % 360}, 95%, 55%))`,
+                background: "radial-gradient(60% 80% at 50% 30%, #00754A 0%, #006241 55%, #00382D 100%)",
                 display: "flex", flexDirection: "column",
                 alignItems: "center", justifyContent: "center",
-                gap: vertical ? 24 : 18, padding: 28,
+                gap: vertical ? 22 : 16, padding: 28,
+                fontFamily: '"Helvetica Neue", system-ui, sans-serif',
               }}>
-                {/* Animated coin emoji */}
+                {/* Subtle ambient steam glow */}
                 <div style={{
-                  fontSize: vertical ? 110 : 86,
-                  transform: `scale(${1 + flash * 0.18}) rotate(${Math.sin(frame / 6) * 12}deg)`,
-                  filter: "drop-shadow(0 12px 32px rgba(0,0,0,0.45))",
+                  position: "absolute", inset: 0,
+                  background: `radial-gradient(40% 30% at 50% 22%, rgba(255,255,255,${0.10 + flash * 0.08}), transparent 70%)`,
+                  pointerEvents: "none",
+                }} />
+
+                {/* Starbucks "wordmark" — green circle with star + STARBUCKS */}
+                <div style={{
+                  display: "flex", alignItems: "center", gap: 12,
+                  marginBottom: 4,
                 }}>
-                  🎰💰
+                  <div style={{
+                    width: vertical ? 60 : 52, height: vertical ? 60 : 52,
+                    borderRadius: "50%",
+                    background: "#FFFFFF",
+                    border: `${vertical ? 5 : 4}px solid #006241`,
+                    display: "grid", placeItems: "center",
+                    fontSize: vertical ? 28 : 24,
+                    color: "#006241",
+                    boxShadow: "0 6px 16px rgba(0,0,0,0.35)",
+                  }}>★</div>
+                  <div style={{
+                    fontFamily: '"Helvetica Neue", system-ui',
+                    fontSize: vertical ? 24 : 20, fontWeight: 700,
+                    color: "white", letterSpacing: 4,
+                  }}>
+                    STARBUCKS<sup style={{ fontSize: "50%", opacity: 0.7, marginLeft: 2 }}>®</sup>
+                  </div>
                 </div>
-                {/* Ad headline */}
+
+                {/* Coffee cup emoji with steam wiggle */}
                 <div style={{
-                  fontFamily: "Impact, system-ui",
-                  fontSize: vertical ? 76 : 70,
+                  fontSize: vertical ? 130 : 100,
+                  transform: `translateY(${Math.sin(frame / 8) * 4}px) rotate(${Math.sin(frame / 10) * 3}deg)`,
+                  filter: "drop-shadow(0 16px 36px rgba(0,0,0,0.55))",
+                  lineHeight: 1,
+                }}>
+                  ☕
+                </div>
+
+                {/* Headline */}
+                <div style={{
+                  fontSize: vertical ? 78 : 68,
                   color: "white", textAlign: "center", lineHeight: 0.95,
-                  letterSpacing: 1, padding: "0 20px",
-                  textShadow: "4px 4px 0 #000, 0 12px 24px rgba(0,0,0,0.5)",
+                  letterSpacing: -2, padding: "0 20px",
+                  fontWeight: 800,
+                  fontStyle: "italic",
+                  textShadow: "0 4px 24px rgba(0,0,0,0.45)",
                 }}>
-                  ROYAL CASINO 365<br/>
-                  <span style={{ color: "#FFEB3B", fontSize: vertical ? 48 : 44 }}>500 FREE COINS!!</span>
+                  Pumpkin Spice
                 </div>
                 <div style={{
-                  padding: vertical ? "16px 36px" : "14px 30px",
-                  background: "#FFEB3B", color: "#000",
-                  fontWeight: 900, fontSize: vertical ? 28 : 24,
-                  borderRadius: 8,
-                  boxShadow: "0 6px 0 #B8A300, 0 12px 24px rgba(0,0,0,0.4)",
+                  fontSize: vertical ? 36 : 30,
+                  color: "#F1AA00",
+                  fontWeight: 800,
+                  letterSpacing: 1,
+                  fontStyle: "italic",
+                  marginTop: -8,
+                  textShadow: "0 2px 8px rgba(0,0,0,0.45)",
+                }}>
+                  is back.
+                </div>
+
+                {/* Order CTA */}
+                <div style={{
+                  marginTop: 6,
+                  padding: vertical ? "14px 32px" : "12px 26px",
+                  background: "white", color: "#006241",
+                  fontWeight: 900, fontSize: vertical ? 22 : 18,
+                  borderRadius: 999,
+                  boxShadow: "0 6px 16px rgba(0,0,0,0.35)",
                   letterSpacing: 0.5,
-                  transform: `scale(${1 + flash * 0.06})`,
+                  transform: `scale(${1 + flash * 0.04})`,
                 }}>
-                  ▶ DOWNLOAD NOW
+                  Order on the app →
                 </div>
+
+                {/* Disclaimer */}
                 <div style={{
-                  fontSize: vertical ? 14 : 12,
-                  fontWeight: 600, opacity: 0.85,
-                  textAlign: "center",
+                  fontSize: vertical ? 13 : 11,
+                  fontWeight: 500, opacity: 0.78,
+                  textAlign: "center", color: "white",
                 }}>
-                  18+ · Terms apply · Gambling can be addictive
+                  Available at participating stores. Earn Stars with every order.
                 </div>
               </div>
 
