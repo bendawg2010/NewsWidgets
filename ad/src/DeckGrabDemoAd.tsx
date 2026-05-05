@@ -23,9 +23,9 @@ const DG_PINK   = "#FF6B6B";
 const DG_PURPLE = "#C147FF";
 const DG_GRADIENT = `linear-gradient(135deg, ${DG_ORANGE} 0%, ${DG_PINK} 50%, ${DG_PURPLE} 100%)`;
 
-// Use the full 47.46s screen recording as the centrepiece.
+// Use the full 55.5s screen recording as the centrepiece.
 const DEMO_TRIM_FROM_S = 0;
-const DEMO_TRIM_TO_S   = 47.4;
+const DEMO_TRIM_TO_S   = 55.5;
 
 // ----- Wallpaper -------------------------------------------------------
 
