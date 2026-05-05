@@ -737,21 +737,18 @@ export const DGImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fal
   );
 };
 
-// ----- Scene 4: Export options ----------------------------------------
+// ----- Scene 4: No ads payoff -----------------------------------------
 
-const EXPORT_OPTIONS = [
-  { label: "TSV",   sub: "Spreadsheets, Quizlet re-import" },
-  { label: "CSV",   sub: "Universal flashcard format" },
-  { label: "JSON",  sub: "For developers" },
-  { label: "Anki",  sub: "Drop into your Anki deck" },
-  { label: "StudyDeck", sub: "Free Quizlet alternative" },
-];
-
-export const DGExportScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
+export const DGNoAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const headerSp = spring({ frame, fps, config: { damping: 18 } });
+  const word1Sp = spring({ frame, fps, config: { damping: 14, stiffness: 130 } });
+  const word2Sp = spring({ frame: frame - 0.4 * fps, fps, config: { damping: 12, stiffness: 200 } });
+  const cardsSp = spring({ frame: frame - 0.9 * fps, fps, config: { damping: 18 } });
+
+  const pageWidth = vertical ? 920 : 1300;
+  const pageHeight = vertical ? 720 : 460;
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
@@ -760,96 +757,99 @@ export const DGExportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fal
         alignItems: "center", justifyContent: "center",
         fontFamily: FONT_STACK, color: "white", padding: 40,
       }}>
+        {/* Headline: No ads. Ever. */}
         <div style={{
-          opacity: headerSp,
-          transform: `translateY(${interpolate(headerSp, [0, 1], [-12, 0])}px)`,
-          fontSize: vertical ? 64 : 50, fontWeight: 800, letterSpacing: -1.8,
-          marginBottom: vertical ? 14 : 12, textAlign: "center",
+          fontSize: vertical ? 130 : 100, fontWeight: 800, letterSpacing: -3,
+          textAlign: "center", lineHeight: 1,
+          opacity: word1Sp,
+          transform: `translateY(${interpolate(word1Sp, [0, 1], [40, 0])}px)`,
         }}>
-          3. Take it <span style={{
-            background: DG_GRADIENT,
-            backgroundClip: "text", WebkitBackgroundClip: "text", color: "transparent",
-          }}>anywhere.</span>
+          No ads.
         </div>
         <div style={{
-          opacity: headerSp,
-          fontSize: vertical ? 24 : 20,
-          color: COLORS.textSecondary, fontWeight: 500, letterSpacing: -0.3,
-          marginBottom: vertical ? 36 : 28, textAlign: "center",
+          fontSize: vertical ? 130 : 100, fontWeight: 800, letterSpacing: -3,
+          textAlign: "center", lineHeight: 1,
+          opacity: word2Sp,
+          transform: `translateY(${interpolate(word2Sp, [0, 1], [40, 0])}px)`,
+          background: DG_GRADIENT,
+          backgroundClip: "text", WebkitBackgroundClip: "text", color: "transparent",
+          marginTop: vertical ? 6 : 4,
+          marginBottom: vertical ? 36 : 26,
         }}>
-          Your cards. Your call.
+          Ever.
         </div>
 
+        {/* Same biology cards, clean view, no ad popup */}
         <div style={{
-          width: vertical ? 880 : 1100,
-          background: "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
-          border: "1px solid rgba(255,255,255,0.10)",
-          borderRadius: 24,
-          padding: vertical ? 28 : 36,
-          backdropFilter: "blur(40px) saturate(180%)",
-          boxShadow: "0 24px 60px rgba(0,0,0,0.55)",
-          opacity: headerSp,
-          transform: `translateY(${interpolate(headerSp, [0, 1], [40, 0])}px)`,
+          opacity: cardsSp,
+          transform: `translateY(${interpolate(cardsSp, [0, 1], [40, 0])}px) scale(${interpolate(cardsSp, [0, 1], [0.95, 1])})`,
         }}>
-          <div style={{
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            marginBottom: vertical ? 22 : 18,
-          }}>
+          <BrowserFrame
+            url="deckgrab.pages.dev/#/cards"
+            width={pageWidth} height={pageHeight}
+          >
             <div style={{
-              fontSize: vertical ? 26 : 22, fontWeight: 800, letterSpacing: -0.5,
+              position: "absolute", inset: 0,
+              background:
+                "radial-gradient(900px 500px at 50% 0%, rgba(193,71,255,0.18), transparent 70%)," +
+                "linear-gradient(180deg, #0c041c 0%, #18080a 100%)",
+              padding: vertical ? "26px 28px" : "26px 36px",
+              fontFamily: FONT_STACK, color: "white",
+              overflow: "hidden",
             }}>
-              Your cards are yoinked.
-            </div>
-            <div style={{
-              padding: "6px 14px", borderRadius: 999,
-              background: "rgba(52, 199, 89, 0.18)",
-              border: "1px solid rgba(52, 199, 89, 0.35)",
-              fontSize: vertical ? 16 : 14, fontWeight: 700, color: DG_GREEN,
-            }}>
-              184 cards
-            </div>
-          </div>
+              {/* Header row */}
+              <div style={{
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+                marginBottom: vertical ? 18 : 16,
+              }}>
+                <div style={{
+                  fontSize: vertical ? 26 : 22, fontWeight: 800, letterSpacing: -0.5,
+                }}>
+                  Biology 101 — Cell Organelles
+                </div>
+                <div style={{
+                  padding: "6px 14px", borderRadius: 999,
+                  background: "rgba(52, 199, 89, 0.18)",
+                  border: "1px solid rgba(52, 199, 89, 0.35)",
+                  fontSize: vertical ? 14 : 13, fontWeight: 700, color: DG_GREEN,
+                }}>
+                  184 cards · ad-free
+                </div>
+              </div>
 
-          {/* Export buttons grid */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: vertical ? "1fr 1fr" : "repeat(5, 1fr)",
-            gap: vertical ? 14 : 12,
-          }}>
-            {EXPORT_OPTIONS.map((opt, i) => {
-              const sp = spring({
-                frame: frame - (0.5 + i * 0.10) * fps, fps,
-                config: { damping: 16, stiffness: 120 },
-              });
-              const isPrimary = i === 0;
-              return (
-                <div key={opt.label} style={{
-                  opacity: sp,
-                  transform: `translateY(${interpolate(sp, [0, 1], [16, 0])}px) scale(${interpolate(sp, [0, 1], [0.94, 1])})`,
-                  background: isPrimary ? DG_GRADIENT : "rgba(255,255,255,0.04)",
-                  border: isPrimary ? "none" : "1px solid rgba(255,255,255,0.10)",
-                  borderRadius: 14,
-                  padding: vertical ? "18px 20px" : "20px 22px",
-                  textAlign: "center",
-                  boxShadow: isPrimary ? "0 12px 32px rgba(193, 71, 255, 0.35)" : "none",
+              {/* Card rows — same biology terms as scene 1 */}
+              {[
+                ["mitochondria", "Powerhouse of the cell — produces ATP."],
+                ["nucleus", "Control center; contains DNA."],
+                ["ribosome", "Site of protein synthesis."],
+                ["lysosome", "Digestion organelle with enzymes."],
+                ["vacuole", "Storage sac for water + waste."],
+              ].map(([term, def], i) => (
+                <div key={i} style={{
+                  display: "grid",
+                  gridTemplateColumns: vertical ? "1fr 1.4fr" : "1fr 1.8fr",
+                  gap: vertical ? 14 : 22,
+                  alignItems: "center",
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: 12,
+                  padding: vertical ? "12px 18px" : "12px 22px",
+                  marginBottom: 8,
                 }}>
                   <div style={{
-                    fontSize: vertical ? 22 : 22, fontWeight: 800, letterSpacing: -0.4,
-                    marginBottom: 4,
+                    fontSize: vertical ? 18 : 17, fontWeight: 700, letterSpacing: -0.3,
                   }}>
-                    {opt.label}
+                    {term}
                   </div>
                   <div style={{
-                    fontSize: vertical ? 13 : 12,
-                    color: isPrimary ? "rgba(255,255,255,0.85)" : COLORS.textSecondary,
-                    fontWeight: 600, letterSpacing: -0.1,
+                    fontSize: vertical ? 16 : 15, color: COLORS.textSecondary, fontWeight: 500,
                   }}>
-                    {opt.sub}
+                    {def}
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          </BrowserFrame>
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

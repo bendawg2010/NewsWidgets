@@ -8,7 +8,7 @@ import { fade } from "@remotion/transitions/fade";
 import { slide } from "@remotion/transitions/slide";
 
 import {
-  DGAdsScene, DGDropScene, DGImportScene, DGExportScene, DGOutroScene,
+  DGAdsScene, DGDropScene, DGImportScene, DGNoAdsScene, DGOutroScene,
 } from "./scenes/DeckGrabScenes";
 import { Watermark } from "./components/Watermark";
 
@@ -27,11 +27,11 @@ export const DG_H_HEIGHT = 1080;
 const H_ADS    = 4.6 * DG_FPS;
 const H_DROP   = 3.6 * DG_FPS;
 const H_IMPORT = 4.0 * DG_FPS;
-const H_EXPORT = 3.6 * DG_FPS;
+const H_NOADS = 3.6 * DG_FPS;
 const H_OUTRO  = 3.4 * DG_FPS;
 
 export const DG_H_DURATION =
-  H_ADS + H_DROP + H_IMPORT + H_EXPORT + H_OUTRO - FADE * 3 - SLIDE_T;
+  H_ADS + H_DROP + H_IMPORT + H_NOADS + H_OUTRO - FADE * 3 - SLIDE_T;
 
 export const DeckGrabAdHorizontal: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
@@ -55,8 +55,8 @@ export const DeckGrabAdHorizontal: React.FC = () => (
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: FADE })} />
 
-      <TransitionSeries.Sequence durationInFrames={H_EXPORT}>
-        <DGExportScene />
+      <TransitionSeries.Sequence durationInFrames={H_NOADS}>
+        <DGNoAdsScene />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: FADE })} />
 
@@ -76,11 +76,11 @@ export const DG_V_HEIGHT = 1920;
 const V_ADS    = 4.6 * DG_FPS;
 const V_DROP   = 3.6 * DG_FPS;
 const V_IMPORT = 4.0 * DG_FPS;
-const V_EXPORT = 3.6 * DG_FPS;
+const V_NOADS = 3.6 * DG_FPS;
 const V_OUTRO  = 3.4 * DG_FPS;
 
 export const DG_V_DURATION =
-  V_ADS + V_DROP + V_IMPORT + V_EXPORT + V_OUTRO - FADE * 3 - SLIDE_T;
+  V_ADS + V_DROP + V_IMPORT + V_NOADS + V_OUTRO - FADE * 3 - SLIDE_T;
 
 export const DeckGrabAdVertical: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>
@@ -104,8 +104,8 @@ export const DeckGrabAdVertical: React.FC = () => (
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: FADE })} />
 
-      <TransitionSeries.Sequence durationInFrames={V_EXPORT}>
-        <DGExportScene vertical />
+      <TransitionSeries.Sequence durationInFrames={V_NOADS}>
+        <DGNoAdsScene vertical />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: FADE })} />
 
