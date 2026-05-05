@@ -115,27 +115,198 @@ const Cursor: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   </svg>
 );
 
-// ----- Scene 1: Quizlet drowned in ads ---------------------------------
+// ----- Reusable: realistic Quizlet set page mock ----------------------
+
+const QUIZLET_BRAND = "#4255FF";
+const QUIZLET_INK   = "#1F2127";
+const QUIZLET_INK_2 = "#586380";
+const QUIZLET_BG    = "#F6F7FB";
+
+const QuizletPage: React.FC<{ vertical?: boolean; bookmarkChildren?: React.ReactNode }> = ({ vertical = false }) => (
+  <div style={{
+    position: "absolute", inset: 0,
+    background: QUIZLET_BG,
+    color: QUIZLET_INK,
+    fontFamily: FONT_STACK,
+    overflow: "hidden",
+  }}>
+    {/* Top white nav bar */}
+    <div style={{
+      height: vertical ? 56 : 60,
+      background: "white",
+      borderBottom: "1px solid #E4E7EF",
+      display: "flex", alignItems: "center",
+      padding: vertical ? "0 22px" : "0 32px",
+      gap: 22,
+    }}>
+      {/* Quizlet wordmark */}
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div style={{
+          width: 28, height: 28, borderRadius: 7,
+          background: QUIZLET_BRAND,
+          display: "grid", placeItems: "center",
+          color: "white", fontWeight: 900, fontSize: 18, fontStyle: "italic",
+        }}>Q</div>
+        <div style={{
+          fontSize: vertical ? 22 : 24, fontWeight: 900, color: QUIZLET_BRAND,
+          letterSpacing: -0.5,
+        }}>Quizlet</div>
+      </div>
+      <div style={{
+        flex: 1,
+        height: 36,
+        background: "#EEF0F6",
+        borderRadius: 999,
+        display: "flex", alignItems: "center",
+        padding: "0 16px",
+        fontSize: 13, color: "#9097AC", fontWeight: 500,
+      }}>
+        <span style={{ marginRight: 8, fontSize: 14 }}>🔍</span>
+        Search for terms or sets
+      </div>
+      <div style={{
+        padding: "8px 18px",
+        background: QUIZLET_BRAND,
+        borderRadius: 999,
+        color: "white", fontWeight: 700, fontSize: 13,
+      }}>
+        Sign up
+      </div>
+    </div>
+
+    {/* Set page content */}
+    <div style={{
+      padding: vertical ? "26px 28px 0" : "32px 60px 0",
+    }}>
+      {/* Set title */}
+      <div style={{
+        fontSize: vertical ? 38 : 36, fontWeight: 900,
+        letterSpacing: -1, marginBottom: 6,
+      }}>
+        Biology 101 — Cell Organelles
+      </div>
+      <div style={{
+        display: "flex", alignItems: "center", gap: 12,
+        marginBottom: vertical ? 22 : 26,
+        fontSize: vertical ? 15 : 14,
+        color: QUIZLET_INK_2, fontWeight: 600,
+      }}>
+        <div style={{
+          width: 28, height: 28, borderRadius: 14,
+          background: "linear-gradient(135deg, #FFB454, #FF6B6B)",
+          display: "grid", placeItems: "center",
+          color: "white", fontWeight: 900, fontSize: 12,
+        }}>MS</div>
+        <span>mr_smith</span>
+        <span>·</span>
+        <span>184 terms</span>
+        <span>·</span>
+        <span>14,329 students</span>
+      </div>
+
+      {/* Action buttons row */}
+      <div style={{
+        display: "flex", gap: 10, marginBottom: vertical ? 22 : 24,
+      }}>
+        {["▶ Flashcards", "🎮 Match", "📝 Test", "✏ Edit"].map((label) => (
+          <div key={label} style={{
+            padding: vertical ? "10px 16px" : "10px 18px",
+            background: "white",
+            border: "1px solid #E4E7EF",
+            borderRadius: 10,
+            fontSize: vertical ? 13 : 13,
+            fontWeight: 700, color: QUIZLET_INK,
+          }}>
+            {label}
+          </div>
+        ))}
+      </div>
+
+      {/* "Terms in this set (184)" */}
+      <div style={{
+        fontSize: vertical ? 18 : 17, fontWeight: 800,
+        marginBottom: 12, color: QUIZLET_INK,
+      }}>
+        Terms in this set (184)
+      </div>
+
+      {/* Term cards */}
+      {[
+        ["mitochondria", "Powerhouse of the cell — produces ATP via cellular respiration."],
+        ["nucleus", "Control center; contains DNA and directs all cell activity."],
+        ["ribosome", "Site of protein synthesis from mRNA templates."],
+        ["lysosome", "Membrane-bound organelle containing digestive enzymes."],
+        ["vacuole", "Storage sac for water, nutrients, and waste."],
+        ["endoplasmic reticulum", "Network of membranes for protein and lipid synthesis."],
+      ].map(([term, def], i) => (
+        <div key={i} style={{
+          background: "white",
+          border: "1px solid #E4E7EF",
+          borderRadius: 8,
+          padding: vertical ? "16px 20px" : "18px 24px",
+          marginBottom: 8,
+          display: "grid",
+          gridTemplateColumns: vertical ? "1fr 1.7fr" : "1fr 2fr",
+          gap: vertical ? 16 : 28,
+          alignItems: "center",
+          boxShadow: "0 1px 0 rgba(0,0,0,0.02)",
+        }}>
+          <div style={{
+            fontSize: vertical ? 17 : 17, fontWeight: 800,
+            letterSpacing: -0.3, color: QUIZLET_INK,
+          }}>
+            {term}
+          </div>
+          <div style={{
+            fontSize: vertical ? 15 : 15, fontWeight: 500,
+            color: QUIZLET_INK_2, lineHeight: 1.4,
+          }}>
+            {def}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ----- Scene 1: Unskippable 15s video ad ------------------------------
 
 export const DGAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   const headerSp = spring({ frame, fps, config: { damping: 18 } });
-  const ad1Sp = spring({ frame: frame - 0.6 * fps, fps, config: { damping: 12, stiffness: 170 } });
-  const ad2Sp = spring({ frame: frame - 1.5 * fps, fps, config: { damping: 12, stiffness: 170 } });
-  const ad3Sp = spring({ frame: frame - 2.3 * fps, fps, config: { damping: 12, stiffness: 170 } });
 
-  const wiggle = Math.sin(frame / 4) * 12;
+  // Ad slides up at 0.6s
+  const adStart = 0.6 * fps;
+  const adSp = spring({ frame: frame - adStart, fps, config: { damping: 14, stiffness: 130 } });
+
+  // Countdown timer: starts at 15, decrements over the remaining time
+  // (sped-up — we show 15→11 in ~2s for the punchline)
+  const timerStart = adStart + 12; // small delay after ad lands
+  const tProgress = interpolate(frame, [timerStart, timerStart + 1.8 * fps], [0, 4], {
+    extrapolateLeft: "clamp", extrapolateRight: "clamp",
+  });
+  const remaining = Math.max(11, Math.ceil(15 - tProgress));
+
+  // Cursor frantically tries to click "Skip" — wiggles around the skip button
+  const wiggle = Math.sin(frame / 3.5) * 10;
   const cursorX = vertical
-    ? 540 + Math.sin(frame / 8) * 200
-    : 1100 + Math.sin(frame / 8) * 240;
+    ? 740 + Math.sin(frame / 9) * 180 + wiggle
+    : 1320 + Math.sin(frame / 9) * 220 + wiggle;
   const cursorY = vertical
-    ? 1100 + Math.cos(frame / 7) * 180 + wiggle
-    : 620 + Math.cos(frame / 7) * 140 + wiggle;
+    ? 1010 + Math.cos(frame / 7) * 60 + wiggle
+    : 540 + Math.cos(frame / 7) * 50 + wiggle;
+
+  // The garish ad content shimmers
+  const flash = (Math.sin(frame / 4) + 1) / 2; // 0..1
 
   const pageWidth = vertical ? 920 : 1300;
   const pageHeight = vertical ? 1280 : 760;
+
+  // Video ad sits in the middle of the browser content area (under bookmarks bar)
+  const adWidth = pageWidth - 80;
+  const adHeight = vertical ? 760 : 540;
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
@@ -147,133 +318,139 @@ export const DGAdsScene: React.FC<{ vertical?: boolean }> = ({ vertical = false 
         <div style={{
           opacity: headerSp,
           transform: `translateY(${interpolate(headerSp, [0, 1], [-12, 0])}px)`,
-          fontSize: vertical ? 80 : 60, fontWeight: 800, letterSpacing: -2,
-          marginBottom: vertical ? 36 : 26,
+          fontSize: vertical ? 78 : 58, fontWeight: 800, letterSpacing: -2,
+          marginBottom: vertical ? 30 : 22,
           textAlign: "center",
         }}>
-          Stuck in Quizlet?
+          Sick of <span style={{ color: QUIZLET_BRAND }}>Quizlet?</span>
         </div>
 
         <BrowserFrame
           url="quizlet.com/501234567/biology-101"
           width={pageWidth} height={pageHeight}
         >
+          <QuizletPage vertical={vertical} />
+
+          {/* Dark overlay sliding up from the bottom of the page area */}
           <div style={{
-            position: "absolute", inset: 0,
-            background: `linear-gradient(180deg, ${QUIZLET_BLUE} 0%, ${QUIZLET_DARK} 100%)`,
-            padding: vertical ? 36 : 50,
-            color: "white",
+            position: "absolute",
+            inset: 0,
+            background: "rgba(0,0,0,0.78)",
+            opacity: adSp,
+            backdropFilter: "blur(2px)",
+            display: "flex", alignItems: "center", justifyContent: "center",
           }}>
+            {/* The video ad player */}
             <div style={{
-              fontSize: vertical ? 32 : 28, fontWeight: 800, letterSpacing: -1,
-              marginBottom: 6,
+              width: adWidth, height: adHeight,
+              borderRadius: 12,
+              background: "#000",
+              boxShadow: "0 24px 64px rgba(0,0,0,0.7)",
+              transform: `translateY(${interpolate(adSp, [0, 1], [80, 0])}px) scale(${interpolate(adSp, [0, 1], [0.92, 1])})`,
+              opacity: adSp,
+              position: "relative",
+              overflow: "hidden",
+              fontFamily: FONT_STACK,
+              border: "1px solid #333",
             }}>
-              Biology 101
-            </div>
-            <div style={{
-              fontSize: vertical ? 18 : 15, color: "rgba(255,255,255,0.65)",
-              fontWeight: 500, marginBottom: vertical ? 24 : 18,
-            }}>
-              184 terms · created by mr.smith
-            </div>
-            {[
-              ["mitochondria", "powerhouse of the cell"],
-              ["nucleus", "control center"],
-              ["ribosome", "site of protein synthesis"],
-              ["lysosome", "digestion organelle"],
-              ["vacuole", "storage compartment"],
-            ].map(([a, b], i) => (
-              <div key={i} style={{
-                display: "flex", justifyContent: "space-between",
-                background: "rgba(255,255,255,0.08)",
-                borderRadius: 10,
-                padding: vertical ? "14px 22px" : "12px 22px",
-                marginBottom: 10, color: "white",
-                fontSize: vertical ? 22 : 18, fontWeight: 600,
-              }}>
-                <span>{a}</span>
-                <span style={{ opacity: 0.75 }}>{b}</span>
-              </div>
-            ))}
-
-            {/* AD #1 — Top banner */}
-            <div style={{
-              position: "absolute",
-              top: 14, left: "10%", right: "10%",
-              padding: vertical ? "16px 22px" : "12px 22px",
-              borderRadius: 10,
-              background: "linear-gradient(90deg, #FFD400, #FF6A00)",
-              color: "#000", fontWeight: 800,
-              fontSize: vertical ? 22 : 18,
-              boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
-              transform: `translateY(${interpolate(ad1Sp, [0, 1], [-80, 0])}px)`,
-              opacity: ad1Sp,
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-            }}>
-              <span>🔥 LOSE 30 LBS WITH THIS WEIRD TRICK!</span>
-              <span style={{
-                fontSize: 11, opacity: 0.6, padding: "2px 6px",
-                border: "1px solid #00000088", borderRadius: 3,
-              }}>×</span>
-            </div>
-
-            {/* AD #2 — Big rectangle */}
-            <div style={{
-              position: "absolute",
-              right: vertical ? 24 : 60, bottom: vertical ? 240 : 140,
-              width: vertical ? 320 : 380,
-              height: vertical ? 240 : 220,
-              borderRadius: 10,
-              background: "linear-gradient(135deg, #FF1744, #C62828)",
-              boxShadow: "0 16px 40px rgba(0,0,0,0.55)",
-              transform: `scale(${ad2Sp}) rotate(${interpolate(ad2Sp, [0, 1], [-8, 0])}deg)`,
-              opacity: ad2Sp,
-              padding: 18,
-              color: "white", fontFamily: "Impact, system-ui",
-              display: "flex", flexDirection: "column",
-              justifyContent: "space-between",
-            }}>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <span style={{
-                  fontSize: 11, opacity: 0.7,
-                  padding: "1px 5px", border: "1px solid #ffffff66", borderRadius: 3,
-                }}>AD</span>
-                <span style={{
-                  fontSize: 11, opacity: 0.6, padding: "1px 5px",
-                  border: "1px solid #ffffff66", borderRadius: 3,
-                }}>×</span>
-              </div>
+              {/* Garish video content */}
               <div style={{
-                fontSize: vertical ? 36 : 32, lineHeight: 1.05, letterSpacing: 0.5,
+                position: "absolute", inset: 0,
+                background: `linear-gradient(135deg, hsl(${(frame * 6) % 360}, 95%, 55%), hsl(${(frame * 6 + 60) % 360}, 95%, 55%))`,
+                display: "flex", flexDirection: "column",
+                alignItems: "center", justifyContent: "center",
+                gap: vertical ? 24 : 18, padding: 28,
               }}>
-                CLICK NOW!!! WIN $1000
+                {/* Animated coin emoji */}
+                <div style={{
+                  fontSize: vertical ? 110 : 86,
+                  transform: `scale(${1 + flash * 0.18}) rotate(${Math.sin(frame / 6) * 12}deg)`,
+                  filter: "drop-shadow(0 12px 32px rgba(0,0,0,0.45))",
+                }}>
+                  🎰💰
+                </div>
+                {/* Ad headline */}
+                <div style={{
+                  fontFamily: "Impact, system-ui",
+                  fontSize: vertical ? 76 : 70,
+                  color: "white", textAlign: "center", lineHeight: 0.95,
+                  letterSpacing: 1, padding: "0 20px",
+                  textShadow: "4px 4px 0 #000, 0 12px 24px rgba(0,0,0,0.5)",
+                }}>
+                  ROYAL CASINO 365<br/>
+                  <span style={{ color: "#FFEB3B", fontSize: vertical ? 48 : 44 }}>500 FREE COINS!!</span>
+                </div>
+                <div style={{
+                  padding: vertical ? "16px 36px" : "14px 30px",
+                  background: "#FFEB3B", color: "#000",
+                  fontWeight: 900, fontSize: vertical ? 28 : 24,
+                  borderRadius: 8,
+                  boxShadow: "0 6px 0 #B8A300, 0 12px 24px rgba(0,0,0,0.4)",
+                  letterSpacing: 0.5,
+                  transform: `scale(${1 + flash * 0.06})`,
+                }}>
+                  ▶ DOWNLOAD NOW
+                </div>
+                <div style={{
+                  fontSize: vertical ? 14 : 12,
+                  fontWeight: 600, opacity: 0.85,
+                  textAlign: "center",
+                }}>
+                  18+ · Terms apply · Gambling can be addictive
+                </div>
               </div>
-              <div style={{ fontSize: 13, opacity: 0.85, fontFamily: FONT_STACK, fontWeight: 600 }}>
-                Limited time — last chance!
+
+              {/* "Sponsored" badge top-left */}
+              <div style={{
+                position: "absolute", top: 12, left: 12,
+                padding: "5px 10px",
+                background: "rgba(0,0,0,0.65)",
+                borderRadius: 4,
+                fontSize: 11, fontWeight: 700, color: "white",
+                letterSpacing: 0.5,
+              }}>
+                SPONSORED · AD
               </div>
-            </div>
 
-            {/* AD #3 — Sticky bottom */}
-            <div style={{
-              position: "absolute",
-              bottom: 0, left: 0, right: 0,
-              padding: vertical ? "20px 24px" : "18px 28px",
-              background: "linear-gradient(180deg, #00C853, #00897B)",
-              color: "white", fontWeight: 800,
-              fontSize: vertical ? 24 : 20,
-              boxShadow: "0 -8px 24px rgba(0,0,0,0.5)",
-              transform: `translateY(${interpolate(ad3Sp, [0, 1], [120, 0])}px)`,
-              opacity: ad3Sp,
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-            }}>
-              <span>📱 DOWNLOAD OUR APP — FREE TRIAL!</span>
-              <span style={{
-                padding: "8px 16px", background: "white", color: "#00897B",
-                borderRadius: 999, fontSize: vertical ? 16 : 14,
-              }}>GET IT</span>
-            </div>
+              {/* "Skip ad in 15..." countdown top-right */}
+              <div style={{
+                position: "absolute", top: 12, right: 12,
+                padding: "8px 14px",
+                background: "rgba(0,0,0,0.78)",
+                borderRadius: 6,
+                fontSize: vertical ? 15 : 14,
+                fontWeight: 700, color: "rgba(255,255,255,0.85)",
+                letterSpacing: 0.3,
+                display: "flex", alignItems: "center", gap: 10,
+              }}>
+                <span style={{ opacity: 0.7 }}>Skip ad in</span>
+                <span style={{
+                  display: "inline-flex", alignItems: "center", justifyContent: "center",
+                  minWidth: 28, height: 28, borderRadius: 14,
+                  background: "white", color: "#000",
+                  fontWeight: 900, fontSize: vertical ? 16 : 15,
+                }}>
+                  {remaining}
+                </span>
+              </div>
 
-            <Cursor x={cursorX} y={cursorY} />
+              {/* Bottom progress bar */}
+              <div style={{
+                position: "absolute", bottom: 0, left: 0, right: 0,
+                height: 4,
+                background: "rgba(0,0,0,0.4)",
+              }}>
+                <div style={{
+                  height: "100%",
+                  width: `${interpolate(remaining, [11, 15], [28, 0])}%`,
+                  background: "#FF0000",
+                }} />
+              </div>
+
+              {/* Cursor frantically trying to skip */}
+              <Cursor x={cursorX - (pageWidth - adWidth) / 2 - 40}
+                      y={cursorY - (vertical ? 220 : 100)} />
+            </div>
           </div>
         </BrowserFrame>
       </AbsoluteFill>
@@ -476,66 +653,31 @@ export const DGImportScene: React.FC<{ vertical?: boolean }> = ({ vertical = fal
             showBookmark
             bookmarkPulse={clickPulse}
           >
-            <div style={{
-              position: "absolute", inset: 0,
-              background: `linear-gradient(180deg, ${QUIZLET_BLUE} 0%, ${QUIZLET_DARK} 100%)`,
-              padding: vertical ? 36 : 50,
-              color: "white", fontFamily: FONT_STACK,
-            }}>
-              <div style={{
-                fontSize: vertical ? 32 : 28, fontWeight: 800, letterSpacing: -1,
-                marginBottom: 6,
-              }}>
-                Biology 101
-              </div>
-              <div style={{
-                fontSize: vertical ? 18 : 15, color: "rgba(255,255,255,0.65)",
-                fontWeight: 500, marginBottom: vertical ? 24 : 18,
-              }}>
-                184 terms · created by mr.smith
-              </div>
-              {[
-                ["mitochondria", "powerhouse of the cell"],
-                ["nucleus", "control center"],
-                ["ribosome", "site of protein synthesis"],
-                ["lysosome", "digestion organelle"],
-                ["vacuole", "storage compartment"],
-              ].map(([a, b], i) => (
-                <div key={i} style={{
-                  display: "flex", justifyContent: "space-between",
-                  background: "rgba(255,255,255,0.08)",
-                  borderRadius: 10,
-                  padding: vertical ? "14px 22px" : "12px 22px",
-                  marginBottom: 10, color: "white",
-                  fontSize: vertical ? 22 : 18, fontWeight: 600,
-                }}>
-                  <span>{a}</span>
-                  <span style={{ opacity: 0.75 }}>{b}</span>
-                </div>
-              ))}
+            <QuizletPage vertical={vertical} />
 
-              {frame >= clickFrame - 2 && (
-                <div style={{
-                  position: "absolute",
-                  top: vertical ? 22 : 18,
-                  right: vertical ? 22 : 18,
-                  padding: "14px 20px",
-                  borderRadius: 12,
-                  background: DG_GRADIENT,
-                  color: "white",
-                  fontFamily: FONT_STACK,
-                  fontWeight: 700,
-                  fontSize: vertical ? 20 : 16,
-                  boxShadow: "0 12px 32px rgba(0,0,0,0.45)",
-                  maxWidth: vertical ? 380 : 340,
-                  transform: `scale(${interpolate(frame, [clickFrame - 2, clickFrame], [0.6, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })})`,
-                }}>
-                  {doneSp > 0.4
-                    ? `DeckGrab: got ${counter} cards! Opening…`
-                    : `DeckGrab: scanning page… ${counter}`}
-                </div>
-              )}
-            </div>
+            {/* StudyDeck/DeckGrab floating progress badge */}
+            {frame >= clickFrame - 2 && (
+              <div style={{
+                position: "absolute",
+                top: vertical ? 22 : 18,
+                right: vertical ? 22 : 18,
+                padding: "14px 20px",
+                borderRadius: 12,
+                background: DG_GRADIENT,
+                color: "white",
+                fontFamily: FONT_STACK,
+                fontWeight: 700,
+                fontSize: vertical ? 20 : 16,
+                boxShadow: "0 12px 32px rgba(0,0,0,0.45)",
+                maxWidth: vertical ? 380 : 340,
+                transform: `scale(${interpolate(frame, [clickFrame - 2, clickFrame], [0.6, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })})`,
+                zIndex: 10,
+              }}>
+                {doneSp > 0.4
+                  ? `DeckGrab: got ${counter} cards! Opening…`
+                  : `DeckGrab: scanning page… ${counter}`}
+              </div>
+            )}
 
             <Cursor x={cx} y={cy} />
           </BrowserFrame>

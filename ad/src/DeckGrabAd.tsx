@@ -24,7 +24,7 @@ const SLIDE_T = 14;
 export const DG_H_WIDTH = 1920;
 export const DG_H_HEIGHT = 1080;
 
-const H_ADS    = 3.4 * DG_FPS;
+const H_ADS    = 4.6 * DG_FPS;
 const H_DROP   = 3.6 * DG_FPS;
 const H_IMPORT = 4.0 * DG_FPS;
 const H_EXPORT = 3.6 * DG_FPS;
@@ -73,7 +73,7 @@ export const DeckGrabAdHorizontal: React.FC = () => (
 export const DG_V_WIDTH = 1080;
 export const DG_V_HEIGHT = 1920;
 
-const V_ADS    = 3.4 * DG_FPS;
+const V_ADS    = 4.6 * DG_FPS;
 const V_DROP   = 3.6 * DG_FPS;
 const V_IMPORT = 4.0 * DG_FPS;
 const V_EXPORT = 3.6 * DG_FPS;
