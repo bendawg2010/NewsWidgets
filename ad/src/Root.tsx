@@ -44,6 +44,11 @@ import {
   DI_FPS, DI_H_WIDTH, DI_H_HEIGHT, DI_H_DURATION,
   DI_V_WIDTH, DI_V_HEIGHT, DI_V_DURATION,
 } from "./DueInAd";
+import {
+  DeckGrabDemoAdHorizontal, DeckGrabDemoAdVertical,
+  DGD_FPS, DGD_H_WIDTH, DGD_H_HEIGHT, DGD_H_DURATION,
+  DGD_V_WIDTH, DGD_V_HEIGHT, DGD_V_DURATION,
+} from "./DeckGrabDemoAd";
 
 export const Root: React.FC = () => (
   <>
@@ -207,6 +212,24 @@ export const Root: React.FC = () => (
       fps={DI_FPS}
       width={DI_V_WIDTH}
       height={DI_V_HEIGHT}
+    />
+
+    {/* DeckGrab — live demo from screen recording */}
+    <Composition
+      id="DeckGrabDemoAdHorizontal"
+      component={DeckGrabDemoAdHorizontal}
+      durationInFrames={DGD_H_DURATION}
+      fps={DGD_FPS}
+      width={DGD_H_WIDTH}
+      height={DGD_H_HEIGHT}
+    />
+    <Composition
+      id="DeckGrabDemoAdVertical"
+      component={DeckGrabDemoAdVertical}
+      durationInFrames={DGD_V_DURATION}
+      fps={DGD_FPS}
+      width={DGD_V_WIDTH}
+      height={DGD_V_HEIGHT}
     />
   </>
 );
