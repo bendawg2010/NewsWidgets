@@ -12,7 +12,7 @@ import { COLORS, FONT_STACK } from "./tokens";
 import { Watermark } from "./components/Watermark";
 
 export const DGD_FPS = 30;
-const DGD_MUSIC = "duein.mp3"; // reuse warm sunset music — fits the brand
+const DGD_MUSIC = "deckgrabdemo.mp3"; // looped to cover the full 52s ad
 const DGD_URL = "deckgrab.pages.dev";
 const DGD_ACCENT = "#C147FF";
 const FADE = 14;
@@ -23,10 +23,9 @@ const DG_PINK   = "#FF6B6B";
 const DG_PURPLE = "#C147FF";
 const DG_GRADIENT = `linear-gradient(135deg, ${DG_ORANGE} 0%, ${DG_PINK} 50%, ${DG_PURPLE} 100%)`;
 
-// Trim the 47s screen recording down to a 14-second highlight reel.
-// (Adjust startFrom/endAt to taste in the playback window.)
+// Use the full 47.46s screen recording as the centrepiece.
 const DEMO_TRIM_FROM_S = 0;
-const DEMO_TRIM_TO_S   = 14;
+const DEMO_TRIM_TO_S   = 47.4;
 
 // ----- Wallpaper -------------------------------------------------------
 
