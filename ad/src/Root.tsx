@@ -34,6 +34,11 @@ import {
   DG_FPS, DG_H_WIDTH, DG_H_HEIGHT, DG_H_DURATION,
   DG_V_WIDTH, DG_V_HEIGHT, DG_V_DURATION,
 } from "./DeckGrabAd";
+import {
+  AssignmentTrackerAdHorizontal, AssignmentTrackerAdVertical,
+  AT_FPS, AT_H_WIDTH, AT_H_HEIGHT, AT_H_DURATION,
+  AT_V_WIDTH, AT_V_HEIGHT, AT_V_DURATION,
+} from "./AssignmentTrackerAd";
 
 export const Root: React.FC = () => (
   <>
@@ -161,6 +166,24 @@ export const Root: React.FC = () => (
       fps={DG_FPS}
       width={DG_V_WIDTH}
       height={DG_V_HEIGHT}
+    />
+
+    {/* AssignmentTracker — student assignment manager */}
+    <Composition
+      id="AssignmentTrackerAdHorizontal"
+      component={AssignmentTrackerAdHorizontal}
+      durationInFrames={AT_H_DURATION}
+      fps={AT_FPS}
+      width={AT_H_WIDTH}
+      height={AT_H_HEIGHT}
+    />
+    <Composition
+      id="AssignmentTrackerAdVertical"
+      component={AssignmentTrackerAdVertical}
+      durationInFrames={AT_V_DURATION}
+      fps={AT_FPS}
+      width={AT_V_WIDTH}
+      height={AT_V_HEIGHT}
     />
   </>
 );
