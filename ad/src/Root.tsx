@@ -49,6 +49,11 @@ import {
   DGD_FPS, DGD_H_WIDTH, DGD_H_HEIGHT, DGD_H_DURATION,
   DGD_V_WIDTH, DGD_V_HEIGHT, DGD_V_DURATION,
 } from "./DeckGrabDemoAd";
+import {
+  StudyDeckModesAdHorizontal, StudyDeckModesAdVertical,
+  SDM_FPS, SDM_H_WIDTH, SDM_H_HEIGHT, SDM_H_DURATION,
+  SDM_V_WIDTH, SDM_V_HEIGHT, SDM_V_DURATION,
+} from "./StudyDeckModesAd";
 
 export const Root: React.FC = () => (
   <>
@@ -230,6 +235,24 @@ export const Root: React.FC = () => (
       fps={DGD_FPS}
       width={DGD_V_WIDTH}
       height={DGD_V_HEIGHT}
+    />
+
+    {/* StudyDeck — all six game modes showcase */}
+    <Composition
+      id="StudyDeckModesAdHorizontal"
+      component={StudyDeckModesAdHorizontal}
+      durationInFrames={SDM_H_DURATION}
+      fps={SDM_FPS}
+      width={SDM_H_WIDTH}
+      height={SDM_H_HEIGHT}
+    />
+    <Composition
+      id="StudyDeckModesAdVertical"
+      component={StudyDeckModesAdVertical}
+      durationInFrames={SDM_V_DURATION}
+      fps={SDM_FPS}
+      width={SDM_V_WIDTH}
+      height={SDM_V_HEIGHT}
     />
   </>
 );
