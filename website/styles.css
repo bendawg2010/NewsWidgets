@@ -1640,6 +1640,12 @@ footer {
   --tracker-accent: #FFC93C;
   --tracker-glow: radial-gradient(80% 60% at 50% 0%, rgba(255,122,69,0.22), transparent 60%);
 }
+.tracker-card.t-notchpop {
+  --tracker-icon: linear-gradient(135deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  --tracker-shadow: rgba(255, 60, 172, 0.45);
+  --tracker-accent: #FF3CAC;
+  --tracker-glow: radial-gradient(80% 60% at 50% 0%, rgba(255,60,172,0.22), transparent 60%);
+}
 
 @media (max-width: 900px) {
   .tracker-grid { grid-template-columns: 1fr; }
