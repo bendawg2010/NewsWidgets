@@ -54,6 +54,11 @@ import {
   SDM_FPS, SDM_H_WIDTH, SDM_H_HEIGHT, SDM_H_DURATION,
   SDM_V_WIDTH, SDM_V_HEIGHT, SDM_V_DURATION,
 } from "./StudyDeckModesAd";
+import {
+  NotchPopAdHorizontal, NotchPopAdVertical,
+  NP_FPS, NP_H_WIDTH, NP_H_HEIGHT, NP_H_DURATION,
+  NP_V_WIDTH, NP_V_HEIGHT, NP_V_DURATION,
+} from "./NotchPopAd";
 
 export const Root: React.FC = () => (
   <>
@@ -253,6 +258,24 @@ export const Root: React.FC = () => (
       fps={SDM_FPS}
       width={SDM_V_WIDTH}
       height={SDM_V_HEIGHT}
+    />
+
+    {/* NotchPop — macOS notch utility */}
+    <Composition
+      id="NotchPopAdHorizontal"
+      component={NotchPopAdHorizontal}
+      durationInFrames={NP_H_DURATION}
+      fps={NP_FPS}
+      width={NP_H_WIDTH}
+      height={NP_H_HEIGHT}
+    />
+    <Composition
+      id="NotchPopAdVertical"
+      component={NotchPopAdVertical}
+      durationInFrames={NP_V_DURATION}
+      fps={NP_FPS}
+      width={NP_V_WIDTH}
+      height={NP_V_HEIGHT}
     />
   </>
 );
